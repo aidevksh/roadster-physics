@@ -139,6 +139,62 @@ def gas_mass(liters, bar, T=293.0):
     return p * liters / 1000 / (n2_z(p, T) * R_N2 * T)
 
 
+def fan_power(fs, floor=4.5, leak=0.036, eta=0.6):
+    """흡입 유지 전력: ΔP = F/A, 틈으로 새는 속도 √(2ΔP/ρ), 팬 전기 = ΔP·Q/η"""
+    if fs <= 0:
+        return 0.0
+    dp = fs / floor
+    return dp * leak * math.sqrt(2 * dp / RHO) / eta
+
+
+def ramp(v0, fan="fixed", fan_g=2.76, mode="drive", m=1700, R=10.6, th_end=170, dt=1e-3):
+    """원호 램프 등반. 위치·속력과 누적 에너지(모터·팬·흡입 몫 구름저항)를 한 상태로 묶어 RK4로 적분"""
+    mu, phi, cda, crr = 1.26, 0.55, 0.50, 0.012
+    fmax, pmax, eta = 1400 * 8.4 / 0.367, 1.0e6, 0.9
+    th_e = math.radians(th_end)
+
+    def rhs(y):
+        s, v = y[0], y[1]
+        th = s / R
+        base = m * v * v / R + m * G * math.cos(th)
+        f_grav, f_d = m * G * math.sin(th), 0.5 * RHO * cda * v * v
+        if fan == "fixed":
+            fs = fan_g * m * G
+        elif fan == "auto":
+            need_drive = (f_grav + f_d) / (mu * phi - crr) if mode == "drive" else 0.0
+            fs = min(max(max(0.3 * m * G, need_drive) - base, 0.0), 3 * m * G)
+        else:
+            fs = 0.0
+        n = base + fs
+        need = f_grav + crr * n + f_d
+        avail = max(0.0, min(mu * phi * n, fmax, pmax / v if v > 0.5 else math.inf))
+        f_drive = min(avail, max(0.0, need + m * (v0 - v) / 0.3)) if mode == "drive" else 0.0
+        return [v, (f_drive - need) / m, f_drive * v, fan_power(fs), crr * fs * v], n, fs
+
+    y, t, fs_max, fail = [0.0, v0, 0.0, 0.0, 0.0], 0.0, 0.0, None
+    while y[0] / R < th_e:
+        k1, n, fs = rhs(y)
+        if n < 0:
+            fail = "fall"
+            break
+        fs_max = max(fs_max, fs)
+        k2 = rhs([a + 0.5 * dt * b for a, b in zip(y, k1)])[0]
+        k3 = rhs([a + 0.5 * dt * b for a, b in zip(y, k2)])[0]
+        k4 = rhs([a + dt * b for a, b in zip(y, k3)])[0]
+        y = [a + dt / 6 * (p + 2 * q + 2 * r + w) for a, p, q, r, w in zip(y, k1, k2, k3, k4)]
+        t += dt
+        if y[1] <= 0:
+            fail = "slip" if mode == "drive" else "stall"
+            break
+    th = min(y[0] / R, th_e)
+    motor, fan_e, rr_s = y[2] / eta, y[3], y[4]
+    down = fan_e + (rr_s / eta if mode == "drive" else rr_s)
+    ke = 0.5 * m * (y[1] ** 2 - v0 ** 2)
+    total = motor + fan_e + max(0.0, -ke)
+    return dict(t=t, pe=m * G * R * (1 - math.cos(th)), motor=motor, fan=fan_e, down=down,
+                share=down / total * 100 if total else 0.0, fs_max=fs_max / (m * G), v_end=y[1], fail=fail)
+
+
 def line(title):
     print(f"\n── {title} " + "─" * max(0, 52 - len(title)))
 
@@ -210,3 +266,19 @@ if __name__ == "__main__":
     vy = math.sqrt(2 * G * 7)
     print(f"7 m 높이 → 필요한 수직 속도 {vy:.2f} m/s, 체공 {2 * vy / G:.2f} s")
     print(f"폭 400 m 협곡 · 45° 발사 최소 속도(공기저항 무시) {math.sqrt(400 * G):.1f} m/s = {math.sqrt(400 * G) * 3.6:.0f} km/h")
+
+    line("8. 더 램프: 다운포스에 쓰는 에너지 (R 10.6 m, 170°)")
+    fs = 4700 * G
+    dp = fs / 4.5
+    print(f"흡입 4,700 kg중: ΔP {dp / 1e3:.2f} kPa, 틈 속도 {math.sqrt(2 * dp / RHO):.1f} m/s, 팬 전기 {fan_power(fs) / 1e3:.1f} kW")
+    k = 1.26 * 0.55
+    print(f"천천히 기어오르는 최소 흡입 mg·√(1 + 1/(μφ)²) = {math.sqrt(1 + 1 / k ** 2):.3f} mg")
+    for label, kw in [("시연 재현 (2.76 mg 고정, 36 km/h)", dict(v0=10.0)),
+                      ("5 km/h로 기어오르기", dict(v0=5 / 3.6)),
+                      ("필요한 만큼만 흡입 (36 km/h)", dict(v0=10.0, fan="auto")),
+                      ("필요한 만큼만 흡입 (5 km/h)", dict(v0=5 / 3.6, fan="auto"))]:
+        r = ramp(**kw)
+        print(f"{label}: {r['t']:.2f} s, mgh {r['pe'] / 1e3:.1f} kJ, 모터 {r['motor'] / 1e3:.1f} kJ, "
+              f"팬 {r['fan'] / 1e3:.1f} kJ, 다운포스 몫 {r['share']:.1f} % (최대 흡입 {r['fs_max']:.3f} mg)")
+    r = ramp(v0=90 / 3.6, fan="off", mode="coast")
+    print(f"흡입 없이 관성 90 km/h: 끝 속력 {r['v_end'] * 3.6:.1f} km/h, 실패 {r['fail']}")

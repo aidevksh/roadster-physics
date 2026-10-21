@@ -6,11 +6,9 @@
 <title>로드스터 물리 실험실</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="2세대 테슬라 로드스터의 발표 제원과 2026년 10월 공개 시연을 고등학교 물리 I·II로 검증하는 인터랙티브 리포트">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+Math&display=swap">
+<meta name="color-scheme" content="light only">
 <style>
-/* 레이아웃: 시험장 기록지 — 읽는 글은 44rem 한 단, 실험실·그래프·표는 넓은 판(70rem)으로 펼친다.
+/* 라이트 전용. 레이아웃: 시험장 기록지 — 읽는 글은 44rem 한 단, 실험실·그래프·표는 넓은 판(70rem)으로 펼친다.
    색: 차체의 세라믹 화이트 + 티타늄 그래파이트 잉크, 강조는 추진기 노즐 링의 금색 하나. */
 :root {
   --paper: #f1f3f5;
@@ -29,10 +27,10 @@
   /* 그래프 범주색 (검증된 순서) */
   --s1: #2a78d6;
   --s2: #eb6834;
-  --s3: #1baf7a;
-  --s4: #eda100;
+  --s3: #199e70;
+  --s4: #c98500;
   --s5: #6250d6;
-  --ref: #98a0a9;
+  --ref: #8a929b;
   --grid: #e7eaee;
   --axis: #c3c9d0;
 
@@ -47,17 +45,19 @@
   /* 코드 */
   --code-bg: #f6f7f9;
   --code-fg: #1d232a;
-  --code-com: #6b7480;
+  --code-com: #5d6672;
   --code-kw: #8a3fb8;
   --code-str: #1f7a4d;
   --code-num: #b5541c;
   --code-fn: #2a63b8;
-  --code-line: #a9b1ba;
+  --code-line: #7f8893;
+  --track: #8b949e;
 
-  --font-display: "Archivo", "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --font-math: "Noto Sans Math", "STIX Two Math", "Cambria Math", "Latin Modern Math", math;
+  /* 기기 기본 글꼴만 사용(외부 글꼴 없음) */
+  --font-body: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", "Noto Sans KR", "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--font-body);
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-math: "STIX Two Math", "Cambria Math", "Latin Modern Math", math;
 
   --step--1: 0.8125rem;
   --step-0: 1rem;
@@ -70,82 +70,7 @@
   --wide: 70rem;
   --text: 44rem;
   --radius: 10px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0e1114;
-    --sheet: #161a1f;
-    --sheet-2: #1c2127;
-    --ink: #e7eaee;
-    --ink-2: #b4bbc3;
-    --ink-3: #8f979f;
-    --rule: #2a3038;
-    --rule-2: #3a424b;
-    --gold: #d4a24a;
-    --gold-ink: #e2bb6c;
-    --gold-wash: #2a2316;
-    --focus: #6aa3f2;
-    --s1: #3987e5;
-    --s2: #d95926;
-    --s3: #199e70;
-    --s4: #c98500;
-    --s5: #9085e9;
-    --ref: #6f7780;
-    --grid: #232930;
-    --axis: #3a424b;
-    --ok: #0ca30c;
-    --ok-ink: #3fcf3f;
-    --warn: #fab219;
-    --warn-ink: #f2c04d;
-    --bad: #d03b3b;
-    --bad-ink: #f07a7a;
-    --code-bg: #10151a;
-    --code-fg: #dfe4e9;
-    --code-com: #7d8792;
-    --code-kw: #c792ea;
-    --code-str: #8bd5a8;
-    --code-num: #f2a46b;
-    --code-fn: #82aaff;
-    --code-line: #4a535d;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0e1114;
-  --sheet: #161a1f;
-  --sheet-2: #1c2127;
-  --ink: #e7eaee;
-  --ink-2: #b4bbc3;
-  --ink-3: #8f979f;
-  --rule: #2a3038;
-  --rule-2: #3a424b;
-  --gold: #d4a24a;
-  --gold-ink: #e2bb6c;
-  --gold-wash: #2a2316;
-  --focus: #6aa3f2;
-  --s1: #3987e5;
-  --s2: #d95926;
-  --s3: #199e70;
-  --s4: #c98500;
-  --s5: #9085e9;
-  --ref: #6f7780;
-  --grid: #232930;
-  --axis: #3a424b;
-  --ok: #0ca30c;
-  --ok-ink: #3fcf3f;
-  --warn: #fab219;
-  --warn-ink: #f2c04d;
-  --bad: #d03b3b;
-  --bad-ink: #f07a7a;
-  --code-bg: #10151a;
-  --code-fg: #dfe4e9;
-  --code-com: #7d8792;
-  --code-kw: #c792ea;
-  --code-str: #8bd5a8;
-  --code-num: #f2a46b;
-  --code-fn: #82aaff;
-  --code-line: #4a535d;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -211,7 +136,6 @@ small { font-size: var(--step--1); }
 .topnav .wrap { display: flex; align-items: center; gap: 0.75rem; min-height: 3.25rem; }
 .brand {
   font-family: var(--font-display);
-  font-stretch: 112%;
   font-weight: 700;
   font-size: 0.95rem;
   white-space: nowrap;
@@ -240,17 +164,6 @@ small { font-size: var(--step--1); }
 }
 .navlinks a:hover { background: var(--sheet); color: var(--ink); }
 .navlinks a[aria-current="true"] { background: var(--ink); color: var(--paper); }
-.theme-btn {
-  flex: none;
-  width: 2.25rem; height: 2.25rem;
-  display: grid; place-items: center;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: var(--sheet);
-  color: var(--ink);
-  cursor: pointer;
-}
-.theme-btn svg { width: 1.1rem; height: 1.1rem; }
 
 /* ── 히어로 ───────────────────────────────────── */
 .hero { padding-block: clamp(2.5rem, 7vw, 5rem) 2rem; }
@@ -258,12 +171,11 @@ small { font-size: var(--step--1); }
 .hero h1 {
   font-family: var(--font-display);
   font-size: var(--step-5);
-  font-stretch: 118%;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.02;
 }
-.hero h1 .unit { font-stretch: 100%; font-weight: 600; color: var(--ink-2); }
+.hero h1 .unit { font-weight: 600; color: var(--ink-2); }
 .hero h1 .gold { color: var(--gold); }
 .hero .lead { font-size: var(--step-1); color: var(--ink-2); max-width: 40rem; line-height: 1.7; }
 .hero-eq {
@@ -301,7 +213,6 @@ small { font-size: var(--step--1); }
 .part-head h2 {
   font-family: var(--font-display);
   font-size: var(--step-4);
-  font-stretch: 110%;
   font-weight: 800;
   letter-spacing: -0.01em;
 }
@@ -312,7 +223,6 @@ section.block + section.block { border-top: 1px dashed var(--rule); }
 .block-head h2 { font-size: var(--step-3); font-weight: 700; }
 .block-head h2 .idx {
   font-family: var(--font-display);
-  font-stretch: 120%;
   font-weight: 800;
   color: var(--gold);
   margin-right: 0.4rem;
@@ -601,8 +511,8 @@ input[type="range"] {
   cursor: pointer;
   margin: 0;
 }
-input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: var(--rule-2); }
-input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: var(--rule-2); }
+input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: var(--track); }
+input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: var(--track); }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px; height: 18px;
@@ -641,6 +551,7 @@ input[type="range"]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px 
 .status-line.ok { color: var(--ok-ink); border-color: color-mix(in srgb, var(--ok) 45%, var(--rule)); }
 .status-line.bad { color: var(--bad-ink); border-color: color-mix(in srgb, var(--bad) 45%, var(--rule)); }
 .status-line.warn { color: var(--warn-ink); border-color: color-mix(in srgb, var(--warn) 55%, var(--rule)); }
+.status-line b { flex: none; white-space: nowrap; }
 .status-line span { color: var(--ink); }
 
 /* 타임 슬립 (드래그 레이스 계측표) */
@@ -670,6 +581,7 @@ input[type="range"]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px 
 
 /* ── 그래프 ───────────────────────────────────── */
 .chart { position: relative; min-width: 0; }
+.chart-panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem 0.9rem; }
 .chart-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.15rem; }
 .chart-sub { font-size: 0.78rem; color: var(--ink-3); margin-bottom: 0.4rem; }
 .chart svg { display: block; width: 100%; overflow: visible; touch-action: pan-y; }
@@ -722,6 +634,7 @@ canvas.sim { width: 100%; display: block; background: var(--sheet-2); border: 1p
 .elegend { display: grid; grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr)); gap: 0.25rem 1rem; font-size: 0.8rem; margin-top: 0.5rem; }
 .elegend span { display: flex; gap: 0.4rem; align-items: center; color: var(--ink-2); }
 .elegend i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.elegend.wide { grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
 .elegend b { font-family: var(--font-mono); font-weight: 600; color: var(--ink); margin-left: auto; font-variant-numeric: tabular-nums; }
 
 /* ── 코드 ─────────────────────────────────────── */
@@ -848,9 +761,6 @@ math[display="block"] { margin: 0; }
       <a href="#code">코드</a>
       <a href="#sources">출처</a>
     </div>
-    <button class="theme-btn" id="themeBtn" type="button" aria-label="밝은 화면과 어두운 화면 전환">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-    </button>
   </div>
 </nav>
 
@@ -871,7 +781,7 @@ math[display="block"] { margin: 0; }
       <span class="fact">공개 <b>2026.10.15</b> 스페이스X 맥그레거 시험장</span>
       <span class="fact">트림 <b>3</b>종 Performance · Thrust · Rocket</span>
       <span class="fact">생산 목표 <b>2028</b> 기가 텍사스</span>
-      <span class="fact">시뮬레이터 <b>7</b>개 + 코드 공개</span>
+      <span class="fact">실험실 <b>7</b>개 + 코드 공개</span>
     </div>
   </div>
 </header>
@@ -929,7 +839,7 @@ math[display="block"] { margin: 0; }
     <h2><span class="idx">1.2</span>주요 퍼포먼스 발표 수치</h2>
     <p>발표된 0→60 mph 기록을 '필요한 평균 가속도'로 바꾸면 물리적 의미가 보입니다. 테슬라 기록은 미국 드래그 레이스 관례대로 첫 1피트(0.3 m)를 뺀 <b>롤아웃</b> 기준인 경우가 많아, 아래 막대는 롤아웃을 반영해 계산했습니다(시연 0.81초는 테슬라가 롤아웃 없는 값이라고 밝혔으므로 그대로 계산).</p>
   </div>
-  <div class="chart" id="claimsChart"></div>
+  <div class="chart chart-panel" id="claimsChart"></div>
   <div class="readouts c4" style="margin-top:1.25rem">
     <a class="ro" href="#accel" style="text-decoration:none"><span class="k">0→60 mph</span><span class="v">1.9 → 0.81<small>초</small></span><span class="s">2017 → 2026 시연. 평균 1.29 g → 3.38 g. 약 1.3 g를 넘는 몫은 팬과 추진기가 맡는다.</span></a>
     <a class="ro" href="#accel" style="text-decoration:none"><span class="k">0→100 mph · 1/4마일</span><span class="v">4.2 · 8.8<small>초</small></span><span class="s">2017 발표. 등가속도로 보면 결승선 속도 329 km/h. 실제로는 출력 한계로 가속이 줄어든다.</span></a>
@@ -943,7 +853,7 @@ math[display="block"] { margin: 0; }
     <h2><span class="idx">1.3</span>개발 경과와 출시 타임라인</h2>
     <p>2020년 출시 약속은 해마다 1~2년씩 밀렸습니다. Electrek은 공개 직전까지 생산 일정이 여섯 번 넘게, 공개 일정이 일곱 번 바뀌었다고 집계했습니다. 아래 그래프에서 점이 대각선(발언 시점 = 생산 연도)에 다가가지 않고 늘 일정한 거리를 두고 따라가는 모습이 '움직이는 과녁'을 보여 줍니다.</p>
   </div>
-  <div class="chart" id="promiseChart"></div>
+  <div class="chart chart-panel" id="promiseChart"></div>
 
   <div class="prose" style="margin-top:1.5rem">
     <h3 style="margin-top:0">지연 사유</h3>
@@ -1587,29 +1497,98 @@ math[display="block"] { margin: 0; }
   <div class="block-head">
     <p class="eyebrow">Part 2 · 6장 (보너스)</p>
     <h2><span class="idx">6</span>공개 시연 장면의 물리 — 더 램프와 킥플립</h2>
-    <p>참고 영상 두 편의 장면을 같은 방식으로 따져 봅니다. 램프는 수직 원운동, 킥플립은 포물선 운동과 회전 문제입니다.</p>
+    <p>참고 영상 두 편의 장면을 같은 방식으로 따져 봅니다. 램프는 수직 원운동과 '다운포스에 드는 에너지', 킥플립은 포물선 운동과 회전 문제입니다.</p>
   </div>
 
   <div class="laws">
-    <div class="law"><span class="name">수직 원운동</span><div class="f tex-d">N(\theta) = \frac{mv^2}{R} + mg\cos\theta + F_s</div><p>θ는 루프 바닥에서 잰 각. 꼭대기(θ = 180°)에서 N ≥ 0이어야 떨어지지 않습니다.</p></div>
-    <div class="law"><span class="name">역학적 에너지 보존</span><div class="f tex-d">\tfrac12 m v_b^2 = \tfrac12 m v_t^2 + mg(2R)</div><p>구동 없이 미끄러져 올라갈 때 바닥과 꼭대기 속력의 관계.</p></div>
+    <div class="law"><span class="name">수직 원운동</span><div class="f tex-d">N(\theta) = \frac{mv^2}{R} + mg\cos\theta + F_s</div><p>θ는 램프 바닥에서 잰 각. N ≥ 0이어야 램프에서 떨어지지 않습니다.</p></div>
+    <div class="law"><span class="name">일의 정의</span><div class="f tex-d">W = Fd\cos\theta</div><p>힘이 운동 방향에 수직(θ = 90°)이면 일은 0입니다. 흡입력이 그렇습니다.</p></div>
+    <div class="law"><span class="name">압력과 유체의 일률</span><div class="f tex-d">\Delta P = \frac{F}{A},\qquad P = \Delta P \cdot Q</div><p>압력 차를 거슬러 1초에 부피 Q의 공기를 밀어내는 데 드는 일률입니다.</p></div>
+    <div class="law"><span class="name">베르누이 (틈으로 새는 속도)</span><div class="f tex-d">v = \sqrt{\frac{2\Delta P}{\rho}}</div><p>압력 차 ΔP가 있는 틈으로 공기가 빨려 들어오는 속도입니다.</p></div>
     <div class="law"><span class="name">포물선 운동</span><div class="f tex-d">h_{\max} = \frac{v_y^2}{2g},\qquad t = \frac{2v_y}{g}</div><p>수평은 등속, 수직은 등가속도 운동.</p></div>
     <div class="law"><span class="name">돌림힘과 회전</span><div class="f tex-d">\tau = I\alpha</div><p>공중에서 차를 뒤집으려면 짝힘(돌림힘)이 필요합니다. 관성 모멘트 I는 대학 물리 맛보기입니다.</p></div>
   </div>
 
   <h3>더 램프 — 거꾸로 붙어 달리기</h3>
   <ol class="derive">
+    <li><b>램프의 모양</b>
+      <p>보도된 텔레메트리는 '피치 170°, 높이 약 21 m'입니다. 원호 램프라면 h = R(1 − cos θ)에서</p>
+      <div class="eq tex-d">R = \frac{21\,\text{m}}{1 - \cos 170^\circ} = \frac{21}{1.985} \approx 10.6\,\text{m},\qquad \text{램프 길이 } s = R\theta = 10.6 \times 2.97 = 31.5\,\text{m}</div></li>
     <li><b>흡입이 없다면: 교과서의 루프 문제</b>
-      <div class="eq tex-d">\text{꼭대기: } \frac{m v_t^2}{R} = mg + N \ge mg \;\Rightarrow\; v_t \ge \sqrt{gR},\qquad v_b \ge \sqrt{5gR}</div>
-      <p>보도된 높이 약 21 m를 지름으로 보면 R ≈ 10.5 m. 꼭대기에서 최소 10.1 m/s, 바닥에서 최소 22.7 m/s(82 km/h)로 들어가야 합니다.</p></li>
+      <div class="eq tex-d">N = \frac{mv^2}{R} + mg\cos\theta \ge 0 \;\Rightarrow\; \text{170° 지점에서 } v \ge \sqrt{gR\cos 10^\circ} = 10.1\,\text{m/s}</div>
+      <p>에너지 보존으로 거슬러 올라가면 바닥에서 약 82 km/h가 필요하고, 구름저항과 공기저항까지 넣은 시뮬레이션으로는 83.9 km/h입니다. 그보다 느리면 꼭대기 근처에서 N이 0이 되어 떨어집니다.</p></li>
     <li><b>흡입이 무게보다 크면 정지해도 매달린다</b>
       <div class="eq tex-d">\text{꼭대기, } v = 0:\quad N = F_s - mg \ge 0 \;\Leftrightarrow\; F_s \ge mg</div>
       <div class="eq tex-d">F_s = 4700\,\text{kg중} = 46.1\,\text{kN}:\quad N = 46.1 - 16.7 = 29.4\,\text{kN} = 1.76\,mg</div>
-      <p>테슬라 텔레메트리대로라면 거꾸로 매달린 채로도 타이어를 누르는 힘이 평지(1 mg)보다 큽니다. 필요한 압력 차는 46.1 kN ÷ 4.5 m² ≈ 10 kPa, 대기압의 약 10 %입니다.</p></li>
-    <li><b>수직 벽에서 정지 출발</b>
-      <div class="eq tex-d">\text{필요한 힘 } mg \;\le\; \text{가능한 마찰 } \mu F_s = 1.26 \times 2.76\,mg = 3.48\,mg</div>
-      <p>θ = 90°(수직 벽)에서는 중력이 전부 차를 끌어내리는 방향입니다. 흡입이 무게보다 크고 μ > 1이면 멈춘 상태에서 다시 출발해 오를 수 있습니다. "정지 상태에서 다시 반 루프를 올라갔다"는 Aviation Week 보도와 맞습니다.</p></li>
+      <p>테슬라 텔레메트리대로라면 거꾸로 매달린 채로도 타이어를 누르는 힘이 평지(1 mg)보다 큽니다.</p></li>
+    <li><b>천천히 기어오르려면 흡입이 얼마나 필요한가</b>
+      <p>후륜구동이라 구동 바퀴에는 하중의 φ = 0.55만 걸립니다. 속력이 거의 0이면 N = F<sub>s</sub> + mg cos θ이고, 오르려면 마찰이 중력 성분을 이겨야 합니다.</p>
+      <div class="eq tex-d">\mu\varphi\,(F_s + mg\cos\theta) \ge mg\sin\theta \;\Rightarrow\; F_s \ge mg\left(\frac{\sin\theta}{\mu\varphi} - \cos\theta\right)</div>
+      <div class="eq tex-d">\text{가장 힘든 각에서의 최댓값: } F_{s,\min} = mg\sqrt{1 + \frac{1}{(\mu\varphi)^2}} = mg\sqrt{1 + \frac{1}{0.693^2}} = 1.76\,mg</div>
+      <p>가장 힘든 곳은 수직 벽(90°)이 아니라 약 125°입니다. 벽을 지나 중력이 차를 램프에서 떼어 놓기 시작하는데 끌어내리는 성분은 아직 크기 때문입니다. 머스크가 말한 '최대 2 g 흡입'은 이 조건을 넘고, 텔레메트리의 2.76 mg는 넉넉한 여유입니다.</p></li>
+    <li><b>흡입력은 일을 하지 않는다</b>
+      <div class="eq tex-d">W_{\text{흡입}} = F_s\, d \cos 90^\circ = 0</div>
+      <p>흡입력은 언제나 램프 면에 수직이고 차는 면을 따라 움직이므로, 흡입력이 차에 해 주는 일은 0입니다. 차를 21 m 들어 올린 일은 모두 바퀴의 구동력이 했습니다. 그런데도 팬은 배터리를 씁니다. 무거운 가방을 들고 가만히 서 있으면 물리학의 일은 0이지만 팔은 지치는 것과 같은 이유입니다.</p></li>
+    <li><b>팬이 쓰는 전력: 압력 × 부피유량</b>
+      <p>스커트가 바닥을 막아도 틈은 남습니다. 압력 차가 있는 한 바깥 공기가 그 틈으로 계속 들어오고, 팬은 그 공기를 같은 압력 차를 거슬러 퍼내야 합니다.</p>
+      <div class="eq tex-d">\Delta P = \frac{F_s}{A} = \frac{46.1\,\text{kN}}{4.5\,\text{m}^2} = 10.2\,\text{kPa},\qquad v_{\text{틈}} = \sqrt{\frac{2\Delta P}{\rho}} = \sqrt{\frac{2 \times 10\,250}{1.225}} = 129\,\text{m/s}</div>
+      <div class="eq tex-d">Q = A_{\text{틈}}\, v_{\text{틈}} = 0.036 \times 129 = 4.7\,\text{m}^3/\text{s},\qquad P = \frac{\Delta P \cdot Q}{\eta} = \frac{10\,250 \times 4.66}{0.6} \approx 80\,\text{kW}</div>
+      <p>틈 면적 0.036 m²(둘레 12 m에 틈 3 mm 정도)는 이 결과가 '팬 4개 × 약 20 kW'(모라비)와 맞도록 정한 가정값입니다. 흡입력을 2배로 키우면 압력 차는 2배, 새는 속도는 √2배라서 전력은 2<sup>1.5</sup> ≈ 2.8배가 됩니다.</p></li>
+    <li><b>에너지 장부: 다운포스에 얼마나 쓰였나</b>
+      <p>4,700 kg중 흡입을 켠 채 36 km/h로 31.5 m 램프를 3.15초에 오르면</p>
+      <div class="eq tex-d">mgh = 1700 \times 9.81 \times 21.0 = 351\,\text{kJ},\qquad E_{\text{팬}} = 79.5\,\text{kW} \times 3.15\,\text{s} = 250\,\text{kJ}</div>
+      <div class="eq tex-d">E_{\text{다운포스}} = E_{\text{팬}} + \frac{C_{rr} F_s\, s}{\eta} = 250 + \frac{0.012 \times 46.1\,\text{kN} \times 31.5\,\text{m}}{0.9} = 269\,\text{kJ}\;(\text{들어간 에너지의 } 40\,\%)</div>
+      <p>다운포스 유지 비용은 거리가 아니라 시간에 비례합니다. 같은 흡입으로 5 km/h로 기어오르면 22.6초 동안 팬이 돌아 1.8 MJ, 들어간 에너지의 82 %가 다운포스 몫이 됩니다. 반대로 매 순간 필요한 만큼만 빨아들이면 36 km/h에서 18 kJ(4 %)로 줄어듭니다. 아래 실험실에서 직접 확인해 보세요.</p></li>
   </ol>
+
+  <div class="lab" id="lab6">
+    <div class="lab-head"><h3><span class="badge">LAB 6</span>더 램프 — 다운포스 에너지 장부</h3><p>곡면 램프를 거꾸로 오르는 동안 쓴 에너지를 1 ms마다 적분합니다. 재생 중에도 슬라이더로 원하는 순간을 살펴볼 수 있습니다.</p></div>
+    <div class="lab-body">
+      <div class="lab-controls">
+        <div class="ctl"><span class="lbl">시나리오</span><div class="presets" id="r6Presets">
+          <button type="button" data-v="demo">시연 재현</button>
+          <button type="button" data-v="auto">필요한 만큼만 흡입</button>
+          <button type="button" data-v="slow">5 km/h로 기어오르기</button>
+          <button type="button" data-v="nofan">흡입 없이 관성으로</button>
+        </div></div>
+        <div class="ctl"><span class="lbl">흡입 제어</span><div class="seg" id="r6Fan"><button type="button" data-v="fixed">고정</button><button type="button" data-v="auto">필요한 만큼(자동)</button><button type="button" data-v="off">끔</button></div></div>
+        <div class="ctl"><div class="ctl-top"><label for="r6Fs">고정 흡입력 F<sub>s</sub>/mg</label><output id="r6FsO"></output></div><input type="range" id="r6Fs" min="0" max="3" step="0.02"><span class="hint">2.76 = 텔레메트리 4,700 kg중. 자동이면 매 순간 떨어지지 않고 미끄러지지 않을 만큼만 빨아들입니다.</span></div>
+        <div class="ctl"><span class="lbl">주행 방식</span><div class="seg" id="r6Mode"><button type="button" data-v="drive">구동(속력 유지)</button><button type="button" data-v="coast">관성(모터 끔)</button></div></div>
+        <div class="ctl"><div class="ctl-top"><label for="r6v">진입 속력</label><output id="r6vO"></output></div><input type="range" id="r6v" min="5" max="110" step="1"></div>
+        <div class="ctl-group">
+          <span class="lbl">램프와 차</span>
+          <div class="ctl"><div class="ctl-top"><label for="r6R">램프 반지름 R</label><output id="r6RO"></output></div><input type="range" id="r6R" min="6" max="16" step="0.1"></div>
+          <div class="ctl"><div class="ctl-top"><label for="r6th">램프 끝 각</label><output id="r6thO"></output></div><input type="range" id="r6th" min="90" max="180" step="1"></div>
+          <div class="ctl"><div class="ctl-top"><label for="r6leak">스커트 틈 면적</label><output id="r6leakO"></output></div><input type="range" id="r6leak" min="100" max="1000" step="10"><span class="hint">틈이 넓을수록 같은 흡입을 유지하는 데 더 많은 공기를 퍼내야 합니다.</span></div>
+          <div class="ctl"><div class="ctl-top"><label for="r6m">질량 m</label><output id="r6mO"></output></div><input type="range" id="r6m" min="1200" max="2400" step="10"></div>
+        </div>
+      </div>
+      <div class="lab-out">
+        <div class="status-line" id="r6Status" aria-live="polite"></div>
+        <div>
+          <canvas class="sim" id="r6Canvas" role="img" aria-label="곡면 램프를 거꾸로 오르는 차와 힘, 텔레메트리"></canvas>
+          <div id="r6Tele" class="muted" style="font-family:var(--font-mono);font-size:0.78rem;margin-top:0.4rem;line-height:1.5" hidden></div>
+          <div class="pg-bar" style="margin-top:0.5rem">
+            <button class="btn" id="r6Play" type="button">일시정지</button>
+            <label for="r6Scrub" class="muted" style="font-size:0.85rem">순간 선택</label>
+            <input type="range" id="r6Scrub" min="0" max="1000" step="1" style="flex:1;min-width:8rem">
+            <output id="r6ScrubO" class="muted" style="font-family:var(--font-mono);font-size:0.8rem"></output>
+          </div>
+        </div>
+        <div class="readouts c4" id="r6Ro"></div>
+        <div>
+          <div class="chart-title">에너지는 어디로 갔나</div>
+          <div class="chart-sub" id="r6Esub"></div>
+          <div class="ebar" id="r6Ebar" role="img" aria-label="램프 등반 에너지 분배 막대"></div>
+          <div class="elegend wide" id="r6Eleg"></div>
+        </div>
+        <div class="chart-grid">
+          <div class="chart" id="r6F"></div>
+          <div class="chart" id="r6E"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <h3>킥플립 — 떠오르고, 돌고, 내려앉기</h3>
   <ol class="derive">
@@ -1627,31 +1606,19 @@ math[display="block"] { margin: 0; }
       <p>폭 약 400 m(¼마일)를 45°로 넘는 최소 조건입니다(공기저항 무시). 1974년 에벨 크니블은 실패했고, 2016년 에디 브라운이 증기 로켓으로 성공했습니다.</p></li>
   </ol>
 
-  <div class="lab" id="lab6">
-    <div class="lab-head"><h3><span class="badge">LAB 6</span>루프와 점프 실험실</h3><p>위는 수직 루프의 수직항력, 아래는 추진기를 더한 포물선 운동입니다.</p></div>
+  <div class="lab" id="lab7">
+    <div class="lab-head"><h3><span class="badge">LAB 7</span>점프 실험실</h3><p>포물선 운동에 위 방향 추력을 더해 봅니다.</p></div>
     <div class="lab-body">
       <div class="lab-controls">
-        <div class="ctl"><span class="lbl">루프 주행 방식</span><div class="seg" id="l6Mode"><button type="button" data-v="coast">관성(에너지 보존)</button><button type="button" data-v="drive">구동(속력 유지)</button></div></div>
-        <div class="ctl"><div class="ctl-top"><label for="l6R">루프 반지름 R</label><output id="l6RO"></output></div><input type="range" id="l6R" min="4" max="25" step="0.5"></div>
-        <div class="ctl"><div class="ctl-top"><label for="l6v">진입 속력</label><output id="l6vO"></output></div><input type="range" id="l6v" min="0" max="120" step="1"></div>
-        <div class="ctl"><div class="ctl-top"><label for="l6fan">흡입 F<sub>s</sub>/mg</label><output id="l6fanO"></output></div><input type="range" id="l6fan" min="0" max="3" step="0.02"><span class="hint">2.76 = 텔레메트리 4,700 kg 상당</span></div>
-        <div class="ctl-group">
-          <span class="lbl">점프</span>
-          <div class="ctl"><span class="lbl">프리셋</span><div class="presets" id="l6Jp"><button type="button" data-v="kick">킥플립 7 m</button><button type="button" data-v="snake">협곡 400 m</button></div></div>
-          <div class="ctl"><div class="ctl-top"><label for="l6jv">발사 속력</label><output id="l6jvO"></output></div><input type="range" id="l6jv" min="5" max="90" step="0.5"></div>
-          <div class="ctl"><div class="ctl-top"><label for="l6ja">발사 각</label><output id="l6jaO"></output></div><input type="range" id="l6ja" min="5" max="85" step="1"></div>
-          <div class="ctl"><div class="ctl-top"><label for="l6jl">위 방향 추력</label><output id="l6jlO"></output></div><input type="range" id="l6jl" min="0" max="4" step="0.05"><span class="hint">차 무게의 배수. 1보다 크면 위로 가속</span></div>
-          <div class="ctl"><div class="ctl-top"><label for="l6jt">추력 시간</label><output id="l6jtO"></output></div><input type="range" id="l6jt" min="0" max="5" step="0.1"></div>
-        </div>
+        <div class="ctl"><span class="lbl">프리셋</span><div class="presets" id="l7Jp"><button type="button" data-v="kick">킥플립 7 m</button><button type="button" data-v="snake">협곡 400 m</button></div></div>
+        <div class="ctl"><div class="ctl-top"><label for="l7jv">발사 속력</label><output id="l7jvO"></output></div><input type="range" id="l7jv" min="5" max="90" step="0.5"></div>
+        <div class="ctl"><div class="ctl-top"><label for="l7ja">발사 각</label><output id="l7jaO"></output></div><input type="range" id="l7ja" min="5" max="85" step="1"></div>
+        <div class="ctl"><div class="ctl-top"><label for="l7jl">위 방향 추력</label><output id="l7jlO"></output></div><input type="range" id="l7jl" min="0" max="4" step="0.05"><span class="hint">차 무게의 배수. 1보다 크면 위로 가속</span></div>
+        <div class="ctl"><div class="ctl-top"><label for="l7jt">추력 시간</label><output id="l7jtO"></output></div><input type="range" id="l7jt" min="0" max="5" step="0.1"></div>
       </div>
       <div class="lab-out">
-        <div class="status-line" id="l6Status" aria-live="polite"></div>
-        <div class="chart-grid">
-          <div><canvas class="sim" id="l6Canvas" height="300" role="img" aria-label="수직 루프를 도는 차와 수직항력"></canvas></div>
-          <div class="chart" id="l6N"></div>
-        </div>
-        <div class="chart" id="l6Jump"></div>
-        <div class="readouts c3" id="l6Ro"></div>
+        <div class="chart" id="l7Jump"></div>
+        <div class="readouts c3" id="l7Ro"></div>
       </div>
     </div>
   </div>
@@ -1676,7 +1643,8 @@ math[display="block"] { margin: 0; }
     <div class="fn"><code>rolloverG · latGWithLoadSensitivity</code><span>돌림힘 평형으로 전복 한계와 하중 민감도. 3장</span></div>
     <div class="fn"><code>simulateBraking(car, v0)</code><span>일-에너지 정리, 회생·마찰·공기·구름으로 에너지 분배. LAB 4</span></div>
     <div class="fn"><code>gasMass · thrusterBudget · thrustVector</code><span>PV = ZmRT, F = ṁv<sub>e</sub>, 로켓 방정식, tan θ = μ. LAB 5</span></div>
-    <div class="fn"><code>loopProfile · jump</code><span>수직 원운동의 수직항력, 추진기를 더한 포물선 운동. LAB 6</span></div>
+    <div class="fn"><code>fanPower · simulateRamp</code><span>흡입 유지 전력 P = ΔP·Q(베르누이 틈 속도), 램프 등반의 에너지 장부. LAB 6</span></div>
+    <div class="fn"><code>loopProfile · jump</code><span>루프의 수직항력, 추진기를 더한 포물선 운동. 6장, LAB 7</span></div>
   </div>
 
   <h3>소스 코드</h3>
@@ -1813,6 +1781,16 @@ const r = RP.simulateLaunch(myCar);
 print('0→100 km/h:', r.ev.t100k.toFixed(2), 's');
 print('1/4 마일:', r.ev.tQuarter.toFixed(2), 's @', (r.ev.tQuarter_v * 3.6).toFixed(0), 'km/h');
 print('최고속도(출력 한계):', (RP.topSpeed(myCar).vPower * 3.6).toFixed(0), 'km/h');
+</script>
+<script type="text/plain" class="snippet" data-title="램프에서 다운포스에 쓰는 에너지">
+// 같은 램프(R 10.6 m, 170°)를 다른 속력으로 오를 때, 4,700 kg중 흡입을 유지하는 데 드는 에너지
+for (const kmh of [5, 18, 36, 60]) {
+  const r = RP.simulateRamp({ m: 1700, R: 10.6, thetaEnd: 170, v0: kmh / 3.6, mode: 'drive', fan: 'fixed', fanG: 2.76 });
+  const share = r.E.downforce / r.E.input * 100;
+  print(`${kmh} km/h: ${r.time.toFixed(1)} s 동안 팬 ${(r.E.fan / 1000).toFixed(0)} kJ, 다운포스 몫 ${share.toFixed(0)} %`);
+}
+// 흡입력은 운동 방향에 수직이라 일을 하지 않는다. 비용은 '유지한 시간'에 비례한다.
+print('팬 전력(4,700 kg중):', (RP.fanPower(4700 * 9.81).Pelec / 1000).toFixed(1), 'kW');
 </script>
 <script id="engine-src">
 /* =====================================================================
@@ -2181,7 +2159,90 @@ print('최고속도(출력 한계):', (RP.topSpeed(myCar).vPower * 3.6).toFixed(
     return { pts, range: x, tFlight: t, yMax, vImpact: Math.hypot(vx, vy) };
   }
 
-  /* ── 11. 기준 차량(프리셋) ─────────────────────────────────────── */
+  /* ── 11. 더 램프: 거꾸로 오르며 다운포스에 쓰는 에너지 ─────────────── */
+  // 흡입을 유지하는 전력. 흡입력 자체는 운동 방향에 수직이라 일을 하지 않지만(W = Fd·cos90° = 0),
+  // 스커트 틈으로 새어 들어오는 공기를 팬이 계속 퍼내야 한다.
+  //   바닥 압력차 ΔP = F_s / A,  틈으로 새는 공기 속도 v = √(2ΔP/ρ) (베르누이),
+  //   부피유량 Q = A_틈 · v,  공기에 해 주는 일률 P = ΔP · Q,  전기 전력 = P / η
+  // 기본 틈 면적 0.036 m²는 4,700 kg중 흡입에서 팬 4개 × 약 20 kW(모라비)가 나오도록 맞춘 가정값이다.
+  function fanPower(Fs, opt = {}) {
+    if (!(Fs > 0)) return { dP: 0, vLeak: 0, Q: 0, Pair: 0, Pelec: 0 };
+    const dP = Fs / (opt.floorArea || 4.5);
+    const vLeak = Math.sqrt(2 * dP / (opt.rho || RHO));
+    const Q = (opt.leakArea ?? 0.036) * vLeak;
+    const Pair = dP * Q;
+    return { dP, vLeak, Q, Pair, Pelec: Pair / (opt.eta || 0.6) };
+  }
+
+  // 반지름 R인 원호 램프를 바닥(θ = 0)에서 끝(θ_end)까지 오르는 차를 적분하며 에너지 장부를 쓴다.
+  // o = { m, R, thetaEnd(°), v0(m/s), mode:'drive'|'coast', fan:'fixed'|'auto'|'off', fanG(고정 흡입, mg 배수),
+  //       marginG(자동 흡입의 여유 수직항력), mu, driveFrac(구동 바퀴 하중 비율), CdA, Crr, Fmax, power, etaDrive, leakArea }
+  function simulateRamp(o) {
+    const m = o.m, R = o.R, thEnd = rad(o.thetaEnd), dt = o.dt || 0.001;
+    const mu = o.mu ?? 1.26, phi = o.driveFrac ?? 0.55, CdA = o.CdA ?? 0.5, Crr = o.Crr ?? 0.012;
+    const Fmax = o.Fmax ?? 1400 * 8.4 / 0.367, Pmax = o.power ?? 1e6, eta = o.etaDrive ?? 0.9;
+    const fanOpt = { leakArea: o.leakArea, floorArea: o.floorArea, eta: o.fanEta };
+    const sampleEvery = Math.max(1, Math.round((o.sample || 0.02) / dt));
+    const E = { motorMech: 0, fan: 0, rr: 0, rrSuction: 0, drag: 0 };
+    const tr = { t: [], deg: [], v: [], N: [], Fs: [], need: [], avail: [], Pfan: [], Emotor: [], Efan: [], Epe: [] };
+    let t = 0, s = 0, v = o.v0, th = 0, step = 0, fail = null, FsMax = 0;
+
+    function forces(v, th) {
+      const base = m * v * v / R + m * G * Math.cos(th);   // 흡입이 없을 때의 수직항력(구심력 몫 + 중력 성분)
+      const Fgrav = m * G * Math.sin(th);                  // 램프를 따라 차를 끌어내리는 중력 성분
+      const Fd = 0.5 * RHO * CdA * v * v;
+      let Fs = 0;
+      if (o.fan === 'fixed') Fs = (o.fanG || 0) * m * G;
+      else if (o.fan === 'auto') {
+        // 필요한 만큼만: 떨어지지 않을 여유 + 구동에 필요한 마찰  μφN ≥ F_중력 + F_항력 + C_rr·N
+        const needDrive = o.mode === 'drive' ? (Fgrav + Fd) / (mu * phi - Crr) : 0;
+        const Nreq = Math.max((o.marginG ?? 0.3) * m * G, needDrive);
+        Fs = Math.min(Math.max(Nreq - base, 0), 3 * m * G);
+      }
+      const N = base + Fs;
+      const avail = Math.max(0, Math.min(mu * phi * N, Fmax, v > 0.5 ? Pmax / v : Infinity));
+      return { Fgrav, Fd, Fs, N, avail };
+    }
+
+    while (th < thEnd) {
+      const f = forces(v, th);
+      if (f.N < 0) { fail = { type: 'fall', deg: th * 180 / Math.PI }; break; }
+      const Frr = Crr * f.N;
+      const need = f.Fgrav + Frr + f.Fd;                  // 속력을 유지하는 데 필요한 구동력
+      const Fdrive = o.mode === 'drive' ? Math.min(f.avail, Math.max(0, need + m * (o.v0 - v) / 0.3)) : 0;
+      const vNew = v + (Fdrive - need) / m * dt;
+      if (vNew <= 0) { fail = { type: o.mode === 'drive' ? 'slip' : 'stall', deg: th * 180 / Math.PI }; v = 0; break; }
+      const ds = 0.5 * (v + vNew) * dt;
+      const Pfan = fanPower(f.Fs, fanOpt).Pelec;
+      E.motorMech += Fdrive * ds;
+      E.fan += Pfan * dt;
+      E.rr += Frr * ds;
+      E.rrSuction += Crr * f.Fs * ds;                     // 흡입 때문에 늘어난 구름저항
+      E.drag += f.Fd * ds;
+      FsMax = Math.max(FsMax, f.Fs);
+      v = vNew; s += ds; th = s / R; t += dt;
+      if (step++ % sampleEvery === 0) {
+        tr.t.push(t); tr.deg.push(th * 180 / Math.PI); tr.v.push(v); tr.N.push(f.N); tr.Fs.push(f.Fs);
+        tr.need.push(need); tr.avail.push(f.avail); tr.Pfan.push(Pfan);
+        tr.Emotor.push(E.motorMech / eta); tr.Efan.push(E.fan); tr.Epe.push(m * G * R * (1 - Math.cos(th)));
+      }
+    }
+    const thF = Math.min(th, thEnd), h = R * (1 - Math.cos(thF));
+    E.pe = m * G * h;                                     // 위치에너지 증가 mgh
+    E.ke = 0.5 * m * (v * v - o.v0 * o.v0);               // 운동에너지 변화
+    E.motorElec = E.motorMech / eta;
+    E.driveLoss = E.motorElec - E.motorMech;              // 모터·인버터 열
+    E.battery = E.motorElec + E.fan;
+    // 다운포스 때문에 쓴 에너지 = 팬 전기 + 흡입 몫 구름저항(구동 중이면 배터리 기준)
+    E.downforce = E.fan + (o.mode === 'drive' ? E.rrSuction / eta : E.rrSuction);
+    E.input = E.battery + Math.max(0, -E.ke);             // 이번 등반에 들어간 에너지(배터리 + 잃은 운동에너지)
+    return {
+      trace: tr, E, fail, time: t, vEnd: v, thetaEnd: thF * 180 / Math.PI, height: h, arc: s, FsMax,
+      launch: fail ? null : { x: R * Math.sin(thF), y: h, vx: v * Math.cos(thF), vy: v * Math.sin(thF) },
+    };
+  }
+
+  /* ── 12. 기준 차량(프리셋) ─────────────────────────────────────── */
   // 공개된 값은 그대로, 공개되지 않은 값은 '가정'(페이지 표 참고). 모든 값은 SI 단위.
   const PERF = {
     label: '2026 Performance', m: 1700, drive: 'RWD', mu: 1.26, rearFrac: 0.55, hCG: 0.40,
@@ -2211,7 +2272,7 @@ print('최고속도(출력 한계):', (RP.topSpeed(myCar).vPower * 3.6).toFixed(
     maxLateralG, maxCornerSpeed, lateralLoadTransfer, rolloverG, latGWithLoadSensitivity,
     simulateBraking,
     n2Z, gasMass, thrusterBudget, thrustVector, optimalThrustAngle, compressionWork, blastEnergy,
-    loopProfile, loopMinSpeeds, jump,
+    loopProfile, loopMinSpeeds, jump, fanPower, simulateRamp,
     PRESETS,
     preset: key => Object.assign({}, PRESETS[key]),
   };
@@ -2361,6 +2422,62 @@ def gas_mass(liters, bar, T=293.0):
     return p * liters / 1000 / (n2_z(p, T) * R_N2 * T)
 
 
+def fan_power(fs, floor=4.5, leak=0.036, eta=0.6):
+    """흡입 유지 전력: ΔP = F/A, 틈으로 새는 속도 √(2ΔP/ρ), 팬 전기 = ΔP·Q/η"""
+    if fs <= 0:
+        return 0.0
+    dp = fs / floor
+    return dp * leak * math.sqrt(2 * dp / RHO) / eta
+
+
+def ramp(v0, fan="fixed", fan_g=2.76, mode="drive", m=1700, R=10.6, th_end=170, dt=1e-3):
+    """원호 램프 등반. 위치·속력과 누적 에너지(모터·팬·흡입 몫 구름저항)를 한 상태로 묶어 RK4로 적분"""
+    mu, phi, cda, crr = 1.26, 0.55, 0.50, 0.012
+    fmax, pmax, eta = 1400 * 8.4 / 0.367, 1.0e6, 0.9
+    th_e = math.radians(th_end)
+
+    def rhs(y):
+        s, v = y[0], y[1]
+        th = s / R
+        base = m * v * v / R + m * G * math.cos(th)
+        f_grav, f_d = m * G * math.sin(th), 0.5 * RHO * cda * v * v
+        if fan == "fixed":
+            fs = fan_g * m * G
+        elif fan == "auto":
+            need_drive = (f_grav + f_d) / (mu * phi - crr) if mode == "drive" else 0.0
+            fs = min(max(max(0.3 * m * G, need_drive) - base, 0.0), 3 * m * G)
+        else:
+            fs = 0.0
+        n = base + fs
+        need = f_grav + crr * n + f_d
+        avail = max(0.0, min(mu * phi * n, fmax, pmax / v if v > 0.5 else math.inf))
+        f_drive = min(avail, max(0.0, need + m * (v0 - v) / 0.3)) if mode == "drive" else 0.0
+        return [v, (f_drive - need) / m, f_drive * v, fan_power(fs), crr * fs * v], n, fs
+
+    y, t, fs_max, fail = [0.0, v0, 0.0, 0.0, 0.0], 0.0, 0.0, None
+    while y[0] / R < th_e:
+        k1, n, fs = rhs(y)
+        if n < 0:
+            fail = "fall"
+            break
+        fs_max = max(fs_max, fs)
+        k2 = rhs([a + 0.5 * dt * b for a, b in zip(y, k1)])[0]
+        k3 = rhs([a + 0.5 * dt * b for a, b in zip(y, k2)])[0]
+        k4 = rhs([a + dt * b for a, b in zip(y, k3)])[0]
+        y = [a + dt / 6 * (p + 2 * q + 2 * r + w) for a, p, q, r, w in zip(y, k1, k2, k3, k4)]
+        t += dt
+        if y[1] <= 0:
+            fail = "slip" if mode == "drive" else "stall"
+            break
+    th = min(y[0] / R, th_e)
+    motor, fan_e, rr_s = y[2] / eta, y[3], y[4]
+    down = fan_e + (rr_s / eta if mode == "drive" else rr_s)
+    ke = 0.5 * m * (y[1] ** 2 - v0 ** 2)
+    total = motor + fan_e + max(0.0, -ke)
+    return dict(t=t, pe=m * G * R * (1 - math.cos(th)), motor=motor, fan=fan_e, down=down,
+                share=down / total * 100 if total else 0.0, fs_max=fs_max / (m * G), v_end=y[1], fail=fail)
+
+
 def line(title):
     print(f"\n── {title} " + "─" * max(0, 52 - len(title)))
 
@@ -2432,6 +2549,22 @@ if __name__ == "__main__":
     vy = math.sqrt(2 * G * 7)
     print(f"7 m 높이 → 필요한 수직 속도 {vy:.2f} m/s, 체공 {2 * vy / G:.2f} s")
     print(f"폭 400 m 협곡 · 45° 발사 최소 속도(공기저항 무시) {math.sqrt(400 * G):.1f} m/s = {math.sqrt(400 * G) * 3.6:.0f} km/h")
+
+    line("8. 더 램프: 다운포스에 쓰는 에너지 (R 10.6 m, 170°)")
+    fs = 4700 * G
+    dp = fs / 4.5
+    print(f"흡입 4,700 kg중: ΔP {dp / 1e3:.2f} kPa, 틈 속도 {math.sqrt(2 * dp / RHO):.1f} m/s, 팬 전기 {fan_power(fs) / 1e3:.1f} kW")
+    k = 1.26 * 0.55
+    print(f"천천히 기어오르는 최소 흡입 mg·√(1 + 1/(μφ)²) = {math.sqrt(1 + 1 / k ** 2):.3f} mg")
+    for label, kw in [("시연 재현 (2.76 mg 고정, 36 km/h)", dict(v0=10.0)),
+                      ("5 km/h로 기어오르기", dict(v0=5 / 3.6)),
+                      ("필요한 만큼만 흡입 (36 km/h)", dict(v0=10.0, fan="auto")),
+                      ("필요한 만큼만 흡입 (5 km/h)", dict(v0=5 / 3.6, fan="auto"))]:
+        r = ramp(**kw)
+        print(f"{label}: {r['t']:.2f} s, mgh {r['pe'] / 1e3:.1f} kJ, 모터 {r['motor'] / 1e3:.1f} kJ, "
+              f"팬 {r['fan'] / 1e3:.1f} kJ, 다운포스 몫 {r['share']:.1f} % (최대 흡입 {r['fs_max']:.3f} mg)")
+    r = ramp(v0=90 / 3.6, fan="off", mode="coast")
+    print(f"흡입 없이 관성 90 km/h: 끝 속력 {r['v_end'] * 3.6:.1f} km/h, 실패 {r['fail']}")
 </script>
 <script type="text/plain" id="py-out">
 
@@ -2483,9 +2616,18 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
 4,700 kg 상당 흡입 · 정지 상태로 거꾸로: N = F_s − mg = 29.4 kN
 7 m 높이 → 필요한 수직 속도 11.72 m/s, 체공 2.39 s
 폭 400 m 협곡 · 45° 발사 최소 속도(공기저항 무시) 62.6 m/s = 226 km/h
+
+── 8. 더 램프: 다운포스에 쓰는 에너지 (R 10.6 m, 170°) ──────────────
+흡입 4,700 kg중: ΔP 10.25 kPa, 틈 속도 129.3 m/s, 팬 전기 79.5 kW
+천천히 기어오르는 최소 흡입 mg·√(1 + 1/(μφ)²) = 1.756 mg
+시연 재현 (2.76 mg 고정, 36 km/h): 3.15 s, mgh 350.9 kJ, 모터 417.4 kJ, 팬 249.5 kJ, 다운포스 몫 40.3 % (최대 흡입 2.760 mg)
+5 km/h로 기어오르기: 22.65 s, mgh 350.9 kJ, 모터 409.7 kJ, 팬 1795.9 kJ, 다운포스 몫 82.3 % (최대 흡입 2.760 mg)
+필요한 만큼만 흡입 (36 km/h): 3.15 s, mgh 350.9 kJ, 모터 400.5 kJ, 팬 15.4 kJ, 다운포스 몫 4.3 % (최대 흡입 0.818 mg)
+필요한 만큼만 흡입 (5 km/h): 22.65 s, mgh 350.9 kJ, 모터 397.5 kJ, 팬 476.8 kJ, 다운포스 몫 55.3 % (최대 흡입 1.758 mg)
+흡입 없이 관성 90 km/h: 끝 속력 48.1 km/h, 실패 None
 </script>
 <script>
-/* 페이지 공통 UI: 수식(TeX → MathML), SVG 그래프, 컨트롤, 테마 */
+/* 페이지 공통 UI: 수식(TeX → MathML), SVG 그래프, 컨트롤 */
 (function () {
   'use strict';
   const NS = 'http://www.w3.org/2000/svg';
@@ -3089,26 +3231,6 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
     return g;
   }
 
-  /* ── 테마 ───────────────────────────────────────────────────── */
-  const rootEl = document.documentElement;
-  const themeHooks = [];
-  const isDark = () => rootEl.dataset.theme ? rootEl.dataset.theme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const onTheme = () => themeHooks.forEach(f => { try { f(); } catch (e) { /* 다음 훅 계속 */ } });
-  try {
-    const saved = localStorage.getItem('rp-theme');
-    if (saved === 'dark' || saved === 'light') rootEl.dataset.theme = saved;
-  } catch (e) { /* 저장소를 못 쓰면 시스템 테마 */ }
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onTheme);
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = $('#themeBtn');
-    if (btn) btn.addEventListener('click', () => {
-      const next = isDark() ? 'light' : 'dark';
-      rootEl.dataset.theme = next;
-      try { localStorage.setItem('rp-theme', next); } catch (e) { /* 무시 */ }
-      onTheme();
-    });
-  });
-
   /* ── 내비게이션 현재 위치 ─────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     const nav = $('#navlinks');
@@ -3128,7 +3250,7 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
     byId.forEach((a, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
   });
 
-  window.RPUI = { $, $$, h, sv, clamp, nf, cssVar, TeX, lineChart, hbarChart, range, seg, readout, status, fitCanvas, arrow, svArrow, themeHooks, isDark, interp };
+  window.RPUI = { $, $$, h, sv, clamp, nf, cssVar, TeX, lineChart, hbarChart, range, seg, readout, status, fitCanvas, arrow, svArrow, interp };
 })();
 </script>
 <script>
@@ -3137,12 +3259,12 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
   'use strict';
   const RP = window.RoadsterPhysics;
   const U = window.RPUI;
-  const { $, $$, h, sv, clamp, nf, cssVar, lineChart, hbarChart, range, seg, readout, status, fitCanvas, arrow, svArrow, themeHooks, interp } = U;
+  const { $, $$, h, sv, clamp, nf, cssVar, lineChart, hbarChart, range, seg, readout, status, fitCanvas, arrow, svArrow, interp } = U;
   const G = RP.G, MPH = RP.MPH;
   const kmh = v => v * 3.6;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const MONO = '"IBM Plex Mono", ui-monospace, Menlo, monospace';
-  const SANS = '"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif';
+  const MONO = 'ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace';
+  const SANS = '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", system-ui, sans-serif';
 
   const KEYS = ['y2017', 'perf', 'thrust', 'demo', 'rocket'];
   const COLOR = { y2017: 'var(--s1)', perf: 'var(--s2)', thrust: 'var(--s3)', demo: 'var(--s3)', rocket: 'var(--s4)' };
@@ -3189,7 +3311,8 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
     safe('lab3', lab3);
     safe('lab4', lab4);
     safe('lab5', lab5);
-    safe('lab6', lab6);
+    safe('lab6', rampLab);
+    safe('lab7', jumpLab);
     safe('code', codeSection);
   });
 
@@ -3280,9 +3403,7 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
     draw(T_END);
     if (!reduce) setTimeout(play, 500);
     $('#raceReplay').addEventListener('click', () => (reduce ? draw(T_END) : play()));
-    themeHooks.push(() => { readColors(); draw(lastT); });
     new ResizeObserver(() => draw(lastT)).observe(c);
-    if (document.fonts) document.fonts.ready.then(() => draw(lastT));
   }
 
   /* ── 1.2 발표 수치 → 필요한 가속도 ─────────────────────────────── */
@@ -3551,9 +3672,8 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
     const car = () => Object.assign(RP.preset('perf'), { mu: st.mu, ClA: st.cl, fanG: st.fan, hCG: st.h, track: st.w });
     const anim = { phi: 0, slide: 0, sliding: false, need: 1, have: 1 };
     let col = {};
-    const readColors = () => { col = { ink: cssVar('--ink'), ink2: cssVar('--ink-2'), ink3: cssVar('--ink-3'), rule: cssVar('--rule-2'), s1: cssVar('--s1'), s2: cssVar('--s2'), s3: cssVar('--s3'), bad: cssVar('--bad'), sheet: cssVar('--sheet') }; };
+    const readColors = () => { col = { ink: cssVar('--ink'), ink2: cssVar('--ink-2'), ink3: cssVar('--ink-3'), rule: cssVar('--rule-2'), s1: cssVar('--s1'), s2: cssVar('--s2'), s3: cssVar('--s3'), bad: cssVar('--bad'), badInk: cssVar('--bad-ink'), sheet: cssVar('--sheet') }; };
     readColors();
-    themeHooks.push(readColors);
 
     function rear(c, aLat, down) {
       const svg = $('#l3Rear');
@@ -3687,7 +3807,7 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
       ctx.textAlign = 'left'; ctx.font = '11.5px ' + SANS;
       const key = [[col.s1, '필요한 구심력 mv²/r'], [col.s3, anim.sliding ? '타이어가 낼 수 있는 최대 마찰력' : '마찰 한계 μ(mg + F_down)'], [col.ink3, '속도 방향']];
       key.forEach(([c, t], i) => { ctx.fillStyle = c; ctx.fillRect(10, 12 + i * 17, 12, 3); ctx.fillStyle = col.ink2; ctx.fillText(t, 28, 17 + i * 17); });
-      if (anim.sliding) { ctx.fillStyle = col.bad; ctx.font = '600 12px ' + SANS; ctx.fillText('미끄러짐: 관성으로 접선 방향 직진', 10, H - 12); }
+      if (anim.sliding) { ctx.fillStyle = col.badInk; ctx.font = '600 12px ' + SANS; ctx.fillText('미끄러짐: 관성으로 접선 방향 직진', 10, H - 12); }
       if (visible && !reduce) raf = requestAnimationFrame(frame);
     }
     onVisible(cv, vis => { visible = vis; cancelAnimationFrame(raf); last = 0; if (vis) raf = requestAnimationFrame(frame); });
@@ -3894,89 +4014,347 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
     run();
   }
 
-  /* ── LAB 6 루프와 점프 ─────────────────────────────────────────── */
-  function lab6() {
-    const st = { mode: 'coast', R: 10.5, v: 82, fan: 0, jv: 15.5, ja: 52, jl: 0, jt: 0, jp: 'kick' };
-    const m = 1700, mu = 1.26;
-    const mode = seg('l6Mode', v => { st.mode = v; runLoop(); });
-    mode.set('coast');
+  /* ── LAB 6 더 램프: 다운포스 에너지 장부 ───────────────────────────── */
+  function rampLab() {
+    const st = { fan: 'fixed', Fs: 2.76, mode: 'drive', v: 36, R: 10.6, th: 170, leak: 360, m: 1700 };
+    const PRE = {
+      demo: { fan: 'fixed', Fs: 2.76, mode: 'drive', v: 36 },
+      auto: { fan: 'auto', Fs: 2.76, mode: 'drive', v: 36 },
+      slow: { fan: 'fixed', Fs: 2.76, mode: 'drive', v: 5 },
+      nofan: { fan: 'off', Fs: 2.76, mode: 'coast', v: 90 },
+    };
+    const pbtns = $$('#r6Presets button');
+    const mark = k => pbtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === k)));
+    const changed = () => { mark(null); run(); };
+    const fanSeg = seg('r6Fan', v => { st.fan = v; changed(); });
+    const modeSeg = seg('r6Mode', v => { st.mode = v; changed(); });
+    const height = () => st.R * (1 - Math.cos(st.th * Math.PI / 180));
     const R = {
-      R: range('l6R', v => nf(v, 1) + ' m', () => { st.R = R.R.v; runLoop(); }),
-      v: range('l6v', v => nf(v, 0) + ' km/h', () => { st.v = R.v.v; runLoop(); }),
-      fan: range('l6fan', v => nf(v, 2) + ' mg', () => { st.fan = R.fan.v; runLoop(); }),
-      jv: range('l6jv', v => nf(v, 1) + ' m/s · ' + nf(v * 3.6, 0) + ' km/h', () => { st.jv = R.jv.v; jpMark(null); runJump(); }),
-      ja: range('l6ja', v => nf(v, 0) + '°', () => { st.ja = R.ja.v; jpMark(null); runJump(); }),
-      jl: range('l6jl', v => nf(v, 2) + ' mg', () => { st.jl = R.jl.v; jpMark(null); runJump(); }),
-      jt: range('l6jt', v => nf(v, 1) + ' s', () => { st.jt = R.jt.v; jpMark(null); runJump(); }),
+      Fs: range('r6Fs', v => nf(v, 2) + ' mg · ' + nf(v * st.m, 0) + ' kg중', () => { st.Fs = R.Fs.v; changed(); }),
+      v: range('r6v', v => nf(v, 0) + ' km/h', () => { st.v = R.v.v; changed(); }),
+      R: range('r6R', v => nf(v, 1) + ' m · 높이 ' + nf(v * (1 - Math.cos(st.th * Math.PI / 180)), 1) + ' m', () => { st.R = R.R.v; changed(); }),
+      th: range('r6th', v => nf(v, 0) + '°', () => { st.th = R.th.v; R.R.v = st.R; changed(); }),
+      leak: range('r6leak', v => nf(v, 0) + ' cm²', () => { st.leak = R.leak.v; changed(); }),
+      m: range('r6m', v => nf(v, 0) + ' kg', () => { st.m = R.m.v; R.Fs.v = st.Fs; changed(); }),
+    };
+    const sync = () => { fanSeg.set(st.fan); modeSeg.set(st.mode); for (const k in R) R[k].v = st[k]; };
+    pbtns.forEach(b => b.addEventListener('click', () => { Object.assign(st, PRE[b.dataset.v]); sync(); mark(b.dataset.v); run(); }));
+
+    const fChart = lineChart($('#r6F'), {
+      title: '램프 각도에 따른 힘 (차 무게 mg 단위)', height: 240,
+      x: { label: '램프 각 θ (°)', min: 0, fmt: v => nf(v, 0), tip: v => 'θ = ' + nf(v, 0) + '°' },
+      y: { label: '힘 / mg', fmt: v => nf(v, 1), tip: v => nf(v, 2) + ' mg' },
+    });
+    const eChart = lineChart($('#r6E'), {
+      title: '누적 에너지', height: 240,
+      x: { label: '시간 (s)', min: 0, fmt: v => nf(v, v % 1 ? 1 : 0), tip: v => 't = ' + nf(v, 2) + ' s' },
+      y: { label: '에너지 (kJ)', min: 0, fmt: v => nf(v, 0), tip: v => nf(v, 0) + ' kJ' },
+    });
+
+    let res = null, post = null;
+    const anim = { playing: !reduce, u: reduce ? 0.82 : 0, phase: 'climb', tPost: 0, last: 0, visible: false };
+    const playBtn = $('#r6Play'), scrub = $('#r6Scrub'), scrubO = $('#r6ScrubO');
+    const setPlaying = p => { anim.playing = p && !reduce; playBtn.textContent = anim.playing ? '일시정지' : '재생'; if (anim.playing) kick(); };
+    if (reduce) { playBtn.disabled = true; playBtn.textContent = '애니메이션 꺼짐'; }
+
+    // 기록된 궤적에서 시각 t의 값을 선형 보간
+    function at(t) {
+      const T = res.trace.t, n = T.length;
+      if (!n) return null;
+      let i = 0;
+      if (t <= T[0]) i = 0;
+      else if (t >= T[n - 1]) i = n - 2;
+      else { let lo = 0, hi = n - 1; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (T[mid] <= t) lo = mid; else hi = mid; } i = lo; }
+      const j = Math.min(i + 1, n - 1), f = j === i ? 0 : clamp((t - T[i]) / (T[j] - T[i]), 0, 1);
+      const pick = k => res.trace[k][i] + (res.trace[k][j] - res.trace[k][i]) * f;
+      return { t, deg: pick('deg'), v: pick('v'), N: pick('N'), Fs: pick('Fs'), need: pick('need'), avail: pick('avail'), Pfan: pick('Pfan'), Emotor: pick('Emotor'), Efan: pick('Efan'), Epe: pick('Epe') };
+    }
+
+    // 램프를 떠난 뒤(성공·떨어짐)의 포물선, 또는 미끄러져 내려오는 경로
+    function postPath() {
+      const Rm = st.R;
+      if (res.fail && (res.fail.type === 'slip' || res.fail.type === 'stall')) return { kind: 'slide', deg: res.fail.deg };
+      const th = (res.fail ? res.fail.deg : res.thetaEnd) * Math.PI / 180;
+      const vEnd = res.fail ? res.trace.v[res.trace.v.length - 1] : res.vEnd;
+      let x = Rm * Math.sin(th), y = Rm * (1 - Math.cos(th)), vx = vEnd * Math.cos(th), vy = vEnd * Math.sin(th);
+      const pts = [[x, y, 0]];
+      for (let t = 0, dt = 0.02; t < 4 && y > 0; t += dt) { vy -= G * dt; x += vx * dt; y += vy * dt; pts.push([x, Math.max(y, 0), t + dt]); }
+      return { kind: res.fail ? 'fall' : 'launch', pts, th };
+    }
+
+    function run() {
+      res = RP.simulateRamp({ m: st.m, R: st.R, thetaEnd: st.th, v0: st.v / 3.6, mode: st.mode, fan: st.fan, fanG: st.Fs, leakArea: st.leak / 1e4 });
+      post = postPath();
+      anim.phase = 'climb'; anim.tPost = 0;
+      if (anim.playing) anim.u = 0;
+      const E = res.E, k = x => x / 1000;
+      const share = E.input > 0 ? E.downforce / E.input * 100 : 0;
+      const el = $('#r6Status');
+      if (!res.fail) status(el, 'ok', '등반 성공', ' 램프 끝 ' + nf(res.thetaEnd, 0) + '°에서 시속 ' + nf(kmh(res.vEnd), 0) + ' km로 거꾸로 떠납니다. 다운포스에 쓴 에너지 ' + nf(k(E.downforce), 0) + ' kJ, 들어간 에너지의 ' + nf(share, 0) + ' %입니다.');
+      else if (res.fail.type === 'fall') status(el, 'bad', '떨어짐', ' θ = ' + nf(res.fail.deg, 0) + '°에서 N < 0. 구심력이 모자라 램프에서 떨어집니다. 흡입을 켜거나 더 빠르게 들어가세요.');
+      else if (res.fail.type === 'slip') status(el, 'bad', '미끄러짐', ' θ = ' + nf(res.fail.deg, 0) + '°에서 구동력이 모자라 멈춘 뒤 미끄러져 내려옵니다. 흡입을 키우면 바퀴를 누르는 힘과 마찰이 커집니다.');
+      else status(el, 'warn', '멈춤', ' θ = ' + nf(res.fail.deg, 0) + '°에서 속력이 0. 모터 없이 관성만으로는 더 오르지 못하고 미끄러져 내려옵니다.');
+
+      const overhang = st.th > 90;
+      const hangFs = st.fan === 'fixed' ? st.Fs * st.m * G : st.fan === 'auto' ? Math.max(0, 0.3 - Math.cos(st.th * Math.PI / 180)) * st.m * G : 0;
+      const hangP = RP.fanPower(hangFs, { leakArea: st.leak / 1e4 }).Pelec;
+      const ro = $('#r6Ro');
+      ro.textContent = '';
+      ro.append(
+        readout('다운포스에 쓴 에너지', nf(k(E.downforce), 0), 'kJ', '들어간 에너지의 ' + nf(share, 0) + ' %', true),
+        readout('흡입력이 한 일', '0', 'J', '힘이 운동 방향에 수직 (cos 90° = 0)'),
+        readout('팬 전기에너지', nf(k(E.fan), 0), 'kJ', res.time > 0 ? '평균 ' + nf(E.fan / res.time / 1000, 0) + ' kW × ' + nf(res.time, 2) + ' s' : ''),
+        readout('흡입 몫 구름저항', nf(k(E.rrSuction), 1), 'kJ', 'C_rr · F_s · 거리'),
+        readout('위치에너지 증가 mgh', nf(k(E.pe), 0), 'kJ', '높이 ' + nf(res.height, 1) + ' m'),
+        readout('모터 전기에너지', nf(k(E.motorElec), 0), 'kJ', st.mode === 'drive' ? '구동 효율 90 %' : '모터 꺼짐'),
+        readout('등반 시간', nf(res.time, 2), 's', '램프 ' + nf(res.arc, 1) + ' m 주행'),
+        readout('꼭대기에 1분 매달리면', hangP > 0 ? nf(hangP * 60 / 1e6, 2) : '—', hangP > 0 ? 'MJ' : '', hangP > 0 ? '흡입만 유지해도 팬 ' + nf(hangP / 1000, 0) + ' kW' : overhang ? '흡입 없이는 매달릴 수 없음' : '이 각도는 흡입 없이도 멈춰 설 수 있음'),
+      );
+
+      const parts = [
+        ['위치에너지 증가 mgh', E.pe, 'var(--s1)', 1, false],
+        ['운동에너지 증가', Math.max(0, E.ke), 'var(--s3)', 1, false],
+        ['구름저항 (기본)', E.rr - E.rrSuction, 'var(--ref)', 1, false],
+        ['공기저항', E.drag, 'var(--s5)', 1, false],
+        ['모터·인버터 열', E.driveLoss, 'var(--ref)', 0.45, false],
+        ['구름저항 (흡입 몫)', E.rrSuction, 'var(--s4)', 0.5, true],
+        ['팬 전기에너지 (흡입 유지)', E.fan, 'var(--s4)', 1, true],
+      ];
+      const bar = $('#r6Ebar'), leg = $('#r6Eleg');
+      bar.textContent = ''; leg.textContent = '';
+      const total = parts.reduce((a, p) => a + p[1], 0) || 1;
+      for (const [name, val, c, op, df] of parts) {
+        if (val < 500 && !df) continue;
+        if (val > total * 0.002) bar.append(h('div', { style: `flex:${val} 1 0;background:${c};opacity:${op}`, title: name + ' ' + nf(val / 1000, 0) + ' kJ' }));
+        leg.append(h('span', {}, [h('i', { style: `background:${c};opacity:${op}` }), name + (df ? ' · 다운포스' : ''), h('b', { textContent: nf(val / 1000, val < 10000 ? 1 : 0) + ' kJ · ' + nf(val / total * 100, 0) + '%' })]));
+      }
+      $('#r6Esub').textContent = '들어간 에너지 ' + nf(k(E.input), 0) + ' kJ = 배터리 ' + nf(k(E.battery), 0) + ' kJ'
+        + (E.ke < 0 ? ' + 처음 운동에너지에서 ' + nf(k(-E.ke), 0) + ' kJ' : '') + '. 노란색이 다운포스 몫입니다.';
+      updateCharts();
+      draw();
+    }
+
+    function updateCharts() {
+      const T = res.trace, mg = st.m * G;
+      const cur = at(anim.u * res.time);
+      const ser = [{ name: '수직항력 N', color: 'var(--s1)', pts: T.deg.map((d, i) => [d, T.N[i] / mg]), width: 2.6 }];
+      if (st.fan !== 'off') ser.push({ name: '흡입력 F_s', color: 'var(--s4)', pts: T.deg.map((d, i) => [d, T.Fs[i] / mg]) });
+      if (st.mode === 'drive') {
+        ser.push({ name: '필요한 구동력', color: 'var(--s2)', pts: T.deg.map((d, i) => [d, T.need[i] / mg]) });
+        ser.push({ name: '쓸 수 있는 견인력 μφN', color: 'var(--s3)', pts: T.deg.map((d, i) => [d, T.avail[i] / mg]) });
+      }
+      const ys = ser.flatMap(s => s.pts.map(p => p[1])).filter(Number.isFinite);
+      fChart.set({
+        series: ser, xMax: st.th,
+        yMin: Math.min(0, Math.floor(Math.min(...ys, 0) - 0.2)), yMax: Math.max(1, Math.ceil(Math.max(...ys) + 0.2)),
+        hlines: [{ y: 0, label: 'N = 0 (떨어지는 경계)', color: 'var(--bad)', dash: false, align: 'left' }],
+        vlines: cur ? [{ x: cur.deg, label: '지금 ' + nf(cur.deg, 0) + '°' }] : [],
+      });
+      const kj = x => x / 1000;
+      eChart.set({
+        xMax: Math.max(0.5, res.time),
+        series: [
+          { name: '배터리 사용 합계', color: 'var(--ink)', pts: T.t.map((t, i) => [t, kj(T.Emotor[i] + T.Efan[i])]), width: 2.6 },
+          { name: '모터(전기)', color: 'var(--s2)', pts: T.t.map((t, i) => [t, kj(T.Emotor[i])]) },
+          { name: '팬(전기) = 다운포스', color: 'var(--s4)', pts: T.t.map((t, i) => [t, kj(T.Efan[i])]) },
+          { name: '위치에너지 mgh', color: 'var(--ref)', pts: T.t.map((t, i) => [t, kj(T.Epe[i])]), dash: true },
+        ],
+        vlines: cur ? [{ x: cur.t, label: '지금' }] : [],
+      });
+    }
+
+    // ── 캔버스: 램프, 차, 힘 벡터, 텔레메트리
+    const cv = $('#r6Canvas');
+    let col = {};
+    const readColors = () => {
+      col = { ink: cssVar('--ink'), ink2: cssVar('--ink-2'), ink3: cssVar('--ink-3'), rule: cssVar('--rule'), rule2: cssVar('--rule-2'), sheet: cssVar('--sheet'),
+        s1: cssVar('--s1'), s2: cssVar('--s2'), s3: cssVar('--s3'), s4: cssVar('--s4'), bad: cssVar('--bad'), badInk: cssVar('--bad-ink'), gold: cssVar('--gold') };
+    };
+    readColors();
+    const CAR = [[-2.2, 0.18], [2.2, 0.18], [2.25, 0.5], [1.1, 0.98], [-1.2, 1.08], [-2.15, 0.72]];
+
+    function draw() {
+      if (!res) return;
+      const narrow = cv.clientWidth < 560;
+      const { ctx, w, h: H } = fitCanvas(cv, narrow ? 320 : 390);
+      ctx.clearRect(0, 0, w, H);
+      const Rm = st.R;
+      let xLand = -Rm - 4;
+      if (post && post.pts) xLand = Math.min(xLand, ...post.pts.map(p => p[0]));
+      const xmin = xLand - 2, xmax = Rm + (narrow ? 4 : 15), ymax = 2 * Rm + 2.5;
+      const pad = 14, sc = Math.min((w - 2 * pad) / (xmax - xmin), (H - 2 * pad - 10) / ymax);
+      const ox = pad + ((w - 2 * pad) - (xmax - xmin) * sc) / 2, oy = H - pad - 4;
+      const X = x => ox + (x - xmin) * sc, Y = y => oy - y * sc;
+      const thE = st.th * Math.PI / 180;
+
+      // 지면, 진입로, 지지대, 램프
+      ctx.strokeStyle = col.rule2; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(X(xmin), Y(0) + 1); ctx.lineTo(X(xmax), Y(0) + 1); ctx.stroke();
+      ctx.strokeStyle = col.rule; ctx.lineWidth = 1;
+      for (let d = 20; d < st.th; d += 15) {
+        const t = d * Math.PI / 180, x = Rm * Math.sin(t), y = Rm * (1 - Math.cos(t));
+        ctx.beginPath(); ctx.moveTo(X(x), Y(y)); ctx.lineTo(X(x), Y(0)); ctx.stroke();
+      }
+      ctx.strokeStyle = col.ink2; ctx.lineWidth = Math.max(3, sc * 0.35); ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(X(xmin + 1), Y(0)); ctx.lineTo(X(0), Y(0));
+      for (let d = 0; d <= st.th; d += 2) { const t = d * Math.PI / 180; ctx.lineTo(X(Rm * Math.sin(t)), Y(Rm * (1 - Math.cos(t)))); }
+      ctx.lineTo(X(Rm * Math.sin(thE)), Y(Rm * (1 - Math.cos(thE))));
+      ctx.stroke(); ctx.lineCap = 'butt';
+      ctx.fillStyle = col.ink3; ctx.font = '11px ' + SANS; ctx.textAlign = 'center';
+      ctx.fillText('R = ' + nf(Rm, 1) + ' m', X(0), Y(Rm) + 4);
+
+      // 현재 상태
+      let state, P, tx, ty, nx, ny, flip = 1, label = '';
+      if (anim.phase === 'climb' || !post) {
+        state = at(anim.u * res.time);
+        const t = (state ? state.deg : 0) * Math.PI / 180;
+        P = [Rm * Math.sin(t), Rm * (1 - Math.cos(t))];
+        tx = Math.cos(t); ty = Math.sin(t); nx = -Math.sin(t); ny = Math.cos(t);
+      } else if (post.kind === 'slide') {
+        const back = clamp(anim.tPost / 1.4, 0, 1);
+        const t = post.deg * (1 - back * back) * Math.PI / 180;
+        P = [Rm * Math.sin(t), Rm * (1 - Math.cos(t))];
+        tx = Math.cos(t); ty = Math.sin(t); nx = -Math.sin(t); ny = Math.cos(t);
+        label = '미끄러져 내려옴';
+      } else {
+        const pts = post.pts, tt = anim.tPost;
+        let k = pts.findIndex(p => p[2] >= tt);
+        if (k < 0) k = pts.length - 1;
+        P = [pts[k][0], pts[k][1]];
+        const t = post.th;
+        tx = Math.cos(t); ty = Math.sin(t); nx = -Math.sin(t); ny = Math.cos(t);
+        if (post.kind === 'launch') { flip = Math.cos(clamp(tt / 1.2, 0, 1) * Math.PI); label = '추진기로 뒤집어 착지(시연)'; }
+        else label = '램프에서 떨어짐';
+        ctx.strokeStyle = post.kind === 'launch' ? col.ink3 : col.bad; ctx.setLineDash([5, 5]); ctx.lineWidth = 1.5;
+        ctx.beginPath(); pts.forEach((p, i) => (i ? ctx.lineTo(X(p[0]), Y(p[1])) : ctx.moveTo(X(p[0]), Y(p[1])))); ctx.stroke(); ctx.setLineDash([]);
+      }
+      // 차체(차 좌표계: 앞 = t, 위 = n·flip)
+      const pt = (a, b) => [X(P[0] + a * tx + b * flip * nx), Y(P[1] + a * ty + b * flip * ny)];
+      ctx.fillStyle = col.s2;
+      ctx.beginPath();
+      CAR.forEach(([a, b], i) => { const [x, y] = pt(a, b); if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = col.ink;
+      for (const a of [-1.4, 1.4]) { const [x, y] = pt(a, 0.34); ctx.beginPath(); ctx.arc(x, y, Math.max(2.5, 0.34 * sc), 0, Math.PI * 2); ctx.fill(); }
+
+      // 힘 벡터 (램프 위에 있을 때만)
+      if (state && anim.phase === 'climb') {
+        const mg = st.m * G, k = Math.min(30, sc * 1.6), cap = 4;
+        const [cx0, cy0] = pt(0, 0.62);
+        const vec = (fx, fy, mag, c) => { const L = clamp(mag / mg, 0, cap) * k; if (L > 2) arrow(ctx, cx0, cy0, cx0 + fx * L, cy0 - fy * L, c, 2.6); };
+        vec(nx, ny, Math.max(state.N, 0), col.s1);
+        vec(0, -1, mg, col.ink2);
+        if (state.Fs > 0) vec(-nx, -ny, state.Fs, col.s4);
+        if (st.mode === 'drive') vec(tx, ty, Math.min(state.need, state.avail), col.s2);
+      }
+      if (label) { ctx.fillStyle = post && post.kind === 'launch' ? col.ink2 : col.badInk; ctx.font = '600 12px ' + SANS; ctx.textAlign = 'left'; ctx.fillText(label, 12, 96); }
+
+      // 범례
+      ctx.textAlign = 'left'; ctx.font = '11.5px ' + SANS;
+      [[col.s1, '수직항력 N'], [col.ink2, '중력 mg'], [col.s4, '흡입 F_s'], [col.s2, '구동력']].forEach(([c, t], i) => {
+        ctx.fillStyle = c; ctx.fillRect(12, 12 + i * 17, 12, 3); ctx.fillStyle = col.ink2; ctx.fillText(t, 30, 17 + i * 17);
+      });
+
+      // 텔레메트리 (오른쪽 위)
+      const s = state || at(res.time);
+      const tele = $('#r6Tele');
+      if (s) {
+        const rows = [
+          ['피치', nf(s.deg, 0) + '°'],
+          ['높이', nf(Rm * (1 - Math.cos(s.deg * Math.PI / 180)), 1) + ' m'],
+          ['속력', nf(kmh(s.v), 0) + ' km/h'],
+          ['흡입', nf(s.Fs / G, 0) + ' kg중'],
+          ['수직항력', nf(Math.max(s.N, 0) / G, 0) + ' kg중'],
+          ['팬 전력', nf(s.Pfan / 1000, 0) + ' kW'],
+          ['팬 에너지', nf(s.Efan / 1000, 0) + ' kJ'],
+        ];
+        tele.hidden = !narrow;
+        if (narrow) tele.textContent = 't = ' + nf(s.t, 2) + ' s · ' + rows.map(r => r[0] + ' ' + r[1]).join(' · ');
+        const bw = 178, bh = 20 + rows.length * 17, bx = w - bw - 10, by = 10;
+        if (!narrow) {
+        ctx.fillStyle = col.sheet; ctx.strokeStyle = col.rule2; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.rect(bx, by, bw, bh); ctx.fill(); ctx.stroke();
+        ctx.font = '600 10.5px ' + MONO; ctx.fillStyle = col.ink3; ctx.textAlign = 'left';
+        ctx.fillText('TELEMETRY · t = ' + nf(s.t, 2) + ' s', bx + 9, by + 15);
+        rows.forEach(([kk, vv], i) => {
+          ctx.font = '11.5px ' + SANS; ctx.fillStyle = col.ink2; ctx.textAlign = 'left'; ctx.fillText(kk, bx + 9, by + 33 + i * 17);
+          ctx.font = '600 11.5px ' + MONO; ctx.fillStyle = col.ink; ctx.textAlign = 'right'; ctx.fillText(vv, bx + bw - 9, by + 33 + i * 17);
+        });
+        }
+      }
+      scrub.value = String(Math.round(anim.u * 1000));
+      if (s) scrubO.textContent = 't = ' + nf(s.t, 2) + ' s · θ = ' + nf(s.deg, 0) + '°';
+    }
+
+    // ── 재생
+    let raf = 0;
+    function frame(ts) {
+      const dt = anim.last ? Math.min(0.05, (ts - anim.last) / 1000) : 0;
+      anim.last = ts;
+      if (anim.playing && res) {
+        const rate = Math.max(1, res.time / 5);         // 오래 걸리는 등반은 빨리 감기
+        if (anim.phase === 'climb') {
+          anim.u += dt / Math.max(res.time, 0.1) * rate;
+          if (anim.u >= 1) { anim.u = 1; anim.phase = 'post'; anim.tPost = 0; }
+        } else {
+          anim.tPost += dt;
+          if (anim.tPost > 2.4) { anim.phase = 'climb'; anim.u = 0; }
+        }
+      }
+      draw();
+      if (anim.playing && anim.visible) raf = requestAnimationFrame(frame);
+    }
+    function kick() { cancelAnimationFrame(raf); anim.last = 0; if (anim.visible) raf = requestAnimationFrame(frame); }
+    playBtn.addEventListener('click', () => { setPlaying(!anim.playing); if (!anim.playing) updateCharts(); });
+    scrub.addEventListener('input', () => {
+      setPlaying(false);
+      anim.phase = 'climb'; anim.u = +scrub.value / 1000;
+      draw(); updateCharts();
+    });
+    onVisible(cv, vis => { anim.visible = vis; if (vis && anim.playing) kick(); else cancelAnimationFrame(raf); });
+    new ResizeObserver(() => draw()).observe(cv);
+    sync();
+    mark('demo');
+    run();
+  }
+
+  /* ── LAB 7 점프 ────────────────────────────────────────────────── */
+  function jumpLab() {
+    const st = { jv: 15.5, ja: 52, jl: 0, jt: 0, jp: 'kick' };
+    const jbtns = $$('#l7Jp button');
+    const mark = k => { if (k) st.jp = k; jbtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === k))); };
+    const R = {
+      jv: range('l7jv', v => nf(v, 1) + ' m/s · ' + nf(v * 3.6, 0) + ' km/h', () => { st.jv = R.jv.v; mark(null); run(); }),
+      ja: range('l7ja', v => nf(v, 0) + '°', () => { st.ja = R.ja.v; mark(null); run(); }),
+      jl: range('l7jl', v => nf(v, 2) + ' mg', () => { st.jl = R.jl.v; mark(null); run(); }),
+      jt: range('l7jt', v => nf(v, 1) + ' s', () => { st.jt = R.jt.v; mark(null); run(); }),
     };
     for (const k in R) R[k].v = st[k];
-    const jbtns = $$('#l6Jp button');
-    const jpMark = k => { st.jp = k || st.jp; jbtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === k))); };
     jbtns.forEach(b => b.addEventListener('click', () => {
       const k = b.dataset.v;
       Object.assign(st, k === 'kick' ? { jv: 15.5, ja: 52, jl: 0, jt: 0 } : { jv: 63, ja: 45, jl: 0, jt: 0 });
-      st.jp = k;
-      for (const q of ['jv', 'ja', 'jl', 'jt']) R[q].v = st[q];
-      jpMark(k);
-      runJump();
+      for (const q in R) R[q].v = st[q];
+      mark(k);
+      run();
     }));
-    const nChart = lineChart($('#l6N'), {
-      title: '루프 각도에 따른 힘 (차 무게 mg 단위)', height: 250,
-      x: { label: '바닥에서 잰 각 θ (°)', min: 0, max: 180, fmt: v => nf(v, 0), tip: v => 'θ = ' + nf(v, 0) + '°' },
-      y: { label: '힘 / mg', fmt: v => nf(v, 1), tip: v => nf(v, 2) + ' mg' },
-    });
-    const jChart = lineChart($('#l6Jump'), {
+    const jChart = lineChart($('#l7Jump'), {
       title: '점프 궤적', height: 240,
       x: { label: '수평 거리 (m)', min: 0, fmt: v => nf(v, 0), tip: v => 'x = ' + nf(v, 1) + ' m' },
       y: { label: '높이 (m)', min: 0, fmt: v => nf(v, 0), tip: v => nf(v, 1) + ' m' },
     });
-    let loopPts = [], loopFail = null;
-    function runLoop() {
-      loopPts = RP.loopProfile({ m, R: st.R, v0: st.v / 3.6, fanG: st.fan, mu, mode: st.mode });
-      loopFail = null;
-      for (const q of loopPts) {
-        if (st.mode === 'coast' && q.stalled) { loopFail = { type: q.N >= 0 ? 'stall' : 'fall', deg: q.deg }; break; }
-        if (q.N < 0) { loopFail = { type: 'fall', deg: q.deg }; break; }
-        if (st.mode === 'drive' && q.need > q.avail + 1e-6) { loopFail = { type: 'slip', deg: q.deg }; break; }
-      }
-      const ms = RP.loopMinSpeeds(st.R, st.fan);
-      const el = $('#l6Status');
-      const minN = Math.min(...loopPts.filter(q => !q.stalled).map(q => q.N));
-      if (!loopFail) status(el, 'ok', '꼭대기 통과', ' 가장 작은 수직항력 ' + nf(minN / (m * G), 2) + ' mg. 관성 주행 기준 바닥 최소 속력 ' + nf(ms.vBottom * 3.6, 0) + ' km/h.');
-      else if (loopFail.type === 'fall') status(el, 'bad', '떨어짐', ' θ = ' + loopFail.deg + '°에서 N < 0 — 구심력이 모자라 트랙에서 떨어집니다. 흡입을 키우거나 더 빠르게 들어가세요.');
-      else if (loopFail.type === 'stall') status(el, 'warn', '멈춤', ' θ = ' + loopFail.deg + '°에서 속력이 0. 흡입 덕분에 붙어 있지만, 구동 없이 더 오르지 못하고 미끄러져 내려옵니다.');
-      else status(el, 'bad', '미끄러짐', ' θ = ' + loopFail.deg + '°에서 필요한 접선력이 타이어 마찰 한계를 넘습니다. 흡입을 키우면 해결됩니다.');
-      const toG = q => q / (m * G);
-      const valid = loopPts.filter(q => !q.stalled);
-      const ser = [{ name: '수직항력 N', color: 'var(--s1)', pts: valid.map(q => [q.deg, toG(q.N)]), width: 2.6 }];
-      if (st.mode === 'drive') {
-        ser.push({ name: '필요한 접선력 mg sin θ', color: 'var(--s2)', pts: loopPts.map(q => [q.deg, toG(q.need)]) });
-        ser.push({ name: '가능한 마찰 μN', color: 'var(--s3)', pts: loopPts.map(q => [q.deg, toG(q.avail)]) });
-      }
-      const ys = ser.flatMap(s => s.pts.map(p => p[1]));
-      nChart.set({
-        series: ser,
-        yMin: Math.min(0, Math.floor(Math.min(...ys) - 0.2)),
-        yMax: Math.max(1, Math.ceil(Math.max(...ys) + 0.2)),
-        hlines: [{ y: 0, label: 'N = 0 (떨어지는 경계)', color: 'var(--bad)', dash: false, align: 'left' }],
-        vlines: loopFail ? [{ x: loopFail.deg, label: loopFail.deg + '°', color: 'var(--bad)' }] : [],
-      });
-      anim.t = 0;
-    }
-    function runJump() {
+    function run() {
       const j = RP.jump({ v0: st.jv, angleDeg: st.ja, liftG: st.jl, liftTime: st.jt });
       const isSnake = st.jp === 'snake' && st.jv > 40;
-      const vlines = isSnake ? [{ x: 400, label: '건너편 가장자리 400 m', color: 'var(--gold)' }] : [];
-      const rects = isSnake ? [] : [{ x0: 4, x1: 21, y0: 0, y1: 4.1, label: '차량 행렬 (세미 높이 약 4 m)', fill: 'var(--rule-2)', opacity: 0.5 }];
       jChart.set({
         xMax: Math.max(isSnake ? 420 : 30, Math.ceil(j.range * 1.08)),
         yMax: Math.max(isSnake ? 120 : 8, Math.ceil(j.yMax * 1.15)),
         series: [{ name: '궤적', color: 'var(--s2)', pts: j.pts.map(p => [p.x, p.y]), width: 2.6 }],
-        rects, vlines,
+        rects: isSnake ? [] : [{ x0: 4, x1: 21, y0: 0, y1: 4.1, label: '차량 행렬 (세미 높이 약 4 m)', fill: 'var(--rule-2)', opacity: 0.5 }],
+        vlines: isSnake ? [{ x: 400, label: '건너편 가장자리 400 m', color: 'var(--gold)' }] : [],
         points: [{ x: j.pts.reduce((a, p) => (p.y > a.y ? p : a), j.pts[0]).x, y: j.yMax, color: 'var(--s2)', label: '최고 ' + nf(j.yMax, 1) + ' m' }],
       });
       const vy = Math.sqrt(2 * G * Math.max(j.yMax, 0));
-      const ro = $('#l6Ro');
+      const ro = $('#l7Ro');
       ro.textContent = '';
       ro.append(
         readout('최고 높이', nf(j.yMax, 1), 'm'),
@@ -3987,67 +4365,8 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
         readout('3.3 g 역추력으로 멈추는 높이', nf(vy * vy / (2 * 2.3 * G), 1), 'm', '순감속 2.3 g, d = v²/2a', true),
       );
     }
-
-    // 루프 애니메이션
-    const cv = $('#l6Canvas');
-    const anim = { t: 0 };
-    let raf = 0, last = 0, visible = false, col = {};
-    const readColors = () => { col = { ink: cssVar('--ink'), ink2: cssVar('--ink-2'), ink3: cssVar('--ink-3'), rule: cssVar('--rule-2'), s1: cssVar('--s1'), s2: cssVar('--s2'), s5: cssVar('--s5'), bad: cssVar('--bad') }; };
-    readColors();
-    themeHooks.push(readColors);
-    function frame(ts) {
-      const dt = last ? Math.min(0.05, (ts - last) / 1000) : 0;
-      last = ts;
-      const { ctx, w, h: H } = fitCanvas(cv, 300);
-      ctx.clearRect(0, 0, w, H);
-      const cx = w / 2, cy = H / 2 - 4, Rp = Math.min(w * 0.5, H) / 2 - 26;
-      ctx.strokeStyle = col.rule; ctx.lineWidth = 8; ctx.globalAlpha = 0.4;
-      ctx.beginPath(); ctx.arc(cx, cy, Rp, 0, Math.PI * 2); ctx.stroke();
-      ctx.globalAlpha = 1;
-      ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.moveTo(cx - Rp * 1.6, cy + Rp + 4); ctx.lineTo(cx + Rp * 1.6, cy + Rp + 4); ctx.stroke();
-      ctx.fillStyle = col.ink3; ctx.font = '11.5px ' + SANS; ctx.textAlign = 'center';
-      ctx.fillText('R = ' + nf(st.R, 1) + ' m', cx, cy + 4);
-      // 진행 각 계산: 실제 각속도 v/R 을 화면용으로 1/2배
-      const failDeg = loopFail ? loopFail.deg : 360;
-      if (!reduce) anim.t += dt;
-      const total = 3.2;
-      const p = Math.min(1, anim.t / total);
-      let deg = loopFail ? failDeg * Math.min(1, p * 1.25) : 360 * p;
-      if (reduce) deg = loopFail ? failDeg : 180;
-      if (anim.t > total + 1.2) anim.t = 0;
-      const th = deg * Math.PI / 180;
-      const px = cx + Rp * Math.sin(th), py = cy + Rp * Math.cos(th);
-      const q = loopPts[Math.min(180, Math.round(deg <= 180 ? deg : 360 - deg))] || loopPts[0];
-      const toC = [cx - px, cy - py], L = Math.hypot(toC[0], toC[1]) || 1;
-      const ux = toC[0] / L, uy = toC[1] / L;
-      const sc = Rp * 0.55 / Math.max(1, (q ? Math.abs(q.N) : 1) / (m * G), 1 + st.fan);
-      const qx = px + ux * 8, qy = py + uy * 8;
-      if (q && Number.isFinite(q.N)) arrow(ctx, qx, qy, qx + ux * sc * Math.max(q.N, 0) / (m * G), qy + uy * sc * Math.max(q.N, 0) / (m * G), col.s1, 3);
-      arrow(ctx, qx, qy, qx, qy + sc, col.ink2, 2.4);
-      if (st.fan > 0) arrow(ctx, qx, qy, qx - ux * sc * st.fan, qy - uy * sc * st.fan, col.s5, 2.4);
-      ctx.save();
-      ctx.translate(qx, qy);
-      ctx.rotate(-th);
-      ctx.fillStyle = col.s2;
-      ctx.beginPath();
-      ctx.moveTo(-14, -2); ctx.lineTo(-14, 7); ctx.lineTo(14, 7); ctx.lineTo(14, 1); ctx.lineTo(4, -5); ctx.lineTo(-12, -5);
-      ctx.closePath(); ctx.fill();
-      ctx.restore();
-      ctx.textAlign = 'left'; ctx.font = '11.5px ' + SANS;
-      [[col.s1, '수직항력 N (중심 쪽)'], [col.ink2, '중력 mg'], [col.s5, '흡입 F_s (트랙 쪽)']].forEach(([c, t], i) => {
-        if (i === 2 && !(st.fan > 0)) return;
-        ctx.fillStyle = c; ctx.fillRect(10, 12 + i * 17, 12, 3); ctx.fillStyle = col.ink2; ctx.fillText(t, 28, 17 + i * 17);
-      });
-      if (loopFail && p >= 0.8) { ctx.fillStyle = loopFail.type === 'stall' ? col.ink2 : col.bad; ctx.font = '600 12px ' + SANS; ctx.fillText(loopFail.type === 'fall' ? '트랙에서 떨어짐' : loopFail.type === 'stall' ? '속력 0 — 미끄러져 내려옴' : '미끄러짐', 10, H - 12); }
-      if (visible && !reduce) raf = requestAnimationFrame(frame);
-    }
-    onVisible(cv, vis => { visible = vis; cancelAnimationFrame(raf); last = 0; if (vis) raf = requestAnimationFrame(frame); });
-    new ResizeObserver(() => { if (!visible || reduce) frame(performance.now()); }).observe(cv);
-    runLoop();
-    jpMark('kick');
-    runJump();
-    frame(performance.now());
+    mark('kick');
+    run();
   }
 
   /* ── 코드 장: 소스 보기, 결과 대조, 코드 실험실 ───────────────────── */
@@ -4107,7 +4426,7 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
     const META = {
       js: '이 페이지에서 실제로 실행 중인 코드 그대로입니다.',
       py: '프로젝트 폴더의 verify_physics.py. 실행: python3 verify_physics.py',
-      out: '위 Python 스크립트를 실행한 결과(2026-10-20).',
+      out: '위 Python 스크립트를 실행한 결과(2026-10-21).',
     };
     const view = $('#codeView'), metaEl = $('#codeMeta');
     let cur = 'js';
@@ -4138,6 +4457,10 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
 
     // JS ↔ Python 결과 대조 (Python 값은 verify_physics.py 실행 결과)
     const perfNoFan = Object.assign(RP.preset('perf'), { fanG: 0 });
+    const RAMP = { demo: { v0: 10 }, slow: { v0: 5 / 3.6 }, auto: { v0: 10, fan: 'auto' }, auto5: { v0: 5 / 3.6, fan: 'auto' } };
+    const rampCache = {};
+    const ramp = k => rampCache[k] || (rampCache[k] = RP.simulateRamp(Object.assign({ m: 1700, R: 10.6, thetaEnd: 170, mode: 'drive', fan: 'fixed', fanG: 2.76 }, RAMP[k])));
+    const share = r => r.E.downforce / r.E.input * 100;
     const tests = [
       ['2017 0→60 mph (롤아웃)', () => TRACE.y2017.ev.t60ro, 1.90, 2, 's'],
       ['2017 1/4마일', () => TRACE.y2017.ev.tQuarter, 8.79, 2, 's'],
@@ -4161,6 +4484,14 @@ Rocket 0.55 s        단순 a = 4.97 g | 롤아웃 반영 a = 4.06 g
       ['Rocket 제자리 비행 시간', () => RP.thrusterBudget({ thrust: 80e3, ve: 600, gas: 250, mDry: 1700 }).hover, 8.4, 1, 's'],
       ['최적 분사각 (μ = 1.26)', () => RP.optimalThrustAngle(1.26), 51.6, 1, '°'],
       ['루프 꼭대기 최소 속력 (R 10.5 m)', () => RP.loopMinSpeeds(10.5, 0).vTop, 10.15, 2, 'm/s'],
+      ['흡입 4,700 kg중의 팬 전력', () => RP.fanPower(4700 * G).Pelec / 1000, 79.5, 1, 'kW'],
+      ['램프 시연 재현: 등반 시간', () => ramp('demo').time, 3.15, 2, 's'],
+      ['램프 시연 재현: 팬 에너지', () => ramp('demo').E.fan / 1000, 249.5, 1, 'kJ'],
+      ['램프 시연 재현: 모터 전기에너지', () => ramp('demo').E.motorElec / 1000, 417.4, 1, 'kJ'],
+      ['램프 시연 재현: 다운포스 몫', () => share(ramp('demo')), 40.3, 1, '%'],
+      ['램프 5 km/h: 다운포스 몫', () => share(ramp('slow')), 82.3, 1, '%'],
+      ['램프 자동 흡입 36 km/h: 팬 에너지', () => ramp('auto').E.fan / 1000, 15.4, 1, 'kJ'],
+      ['자동 흡입 5 km/h 최대 흡입 ↔ 식 √(1+1/(μφ)²)', () => ramp('auto5').FsMax / (1700 * G), 1.756, 3, 'mg'],
     ];
     const tb = $('#testTable tbody');
     let pass = 0;
